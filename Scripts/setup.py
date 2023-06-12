@@ -2,7 +2,7 @@ from setuptools import setup, find_packages
 
 setup(
     name='FRANECpy',
-    version='0.0.1',
+    __version__ = 'dev',
     author='Francesco Turini',
     author_email='fturini.turini7@gmail.com',
     description='A simple library for help in the data analysis from FRANEC simulation.',
