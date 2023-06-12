@@ -8,7 +8,6 @@ setup(
     description='A simple library for help in the data analysis from FRANEC simulation.',
     packages=find_packages(),
     install_requires=[
-        'tkinter',
         'pandas',
         'ipython',
     ],
