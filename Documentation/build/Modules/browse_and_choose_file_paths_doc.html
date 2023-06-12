@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>browse_and_choose_file_paths.py &mdash; FRANECpy 0.0.1 documentation</title>
+      <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+  <!--[if lt IE 9]>
+    <script src="../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script src="../_static/jquery.js"></script>
+        <script src="../_static/_sphinx_javascript_frameworks_compat.js"></script>
+        <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
+        <script src="../_static/doctools.js"></script>
+        <script src="../_static/sphinx_highlight.js"></script>
+    <script src="../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="build_tree.py" href="build_tree_doc.html" />
+    <link rel="prev" title="user_interaction.py" href="user_interaction_doc.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="../index.html" class="icon icon-home">
+            FRANECpy
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Contents:</span></p>
+<ul class="current">
+<li class="toctree-l1 current"><a class="reference internal" href="../Modules.html">Modules</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="user_interaction_doc.html">user_interaction.py</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">browse_and_choose_file_paths.py</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#browse_and_choose_file_paths.browse_and_select_files"><code class="docutils literal notranslate"><span class="pre">browse_and_select_files()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#browse_and_choose_file_paths.browse_and_select_trees"><code class="docutils literal notranslate"><span class="pre">browse_and_select_trees()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#browse_and_choose_file_paths.choose_file_paths"><code class="docutils literal notranslate"><span class="pre">choose_file_paths()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#browse_and_choose_file_paths.get_main_data_folder_path"><code class="docutils literal notranslate"><span class="pre">get_main_data_folder_path()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="build_tree_doc.html">build_tree.py</a></li>
+</ul>
+</li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">FRANECpy</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../index.html" class="icon icon-home" aria-label="Home"></a></li>
+          <li class="breadcrumb-item"><a href="../Modules.html">Modules</a></li>
+      <li class="breadcrumb-item active">browse_and_choose_file_paths.py</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="../_sources/Modules/browse_and_choose_file_paths_doc.rst.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="module-browse_and_choose_file_paths">
+<span id="browse-and-choose-file-paths-py"></span><h1>browse_and_choose_file_paths.py<a class="headerlink" href="#module-browse_and_choose_file_paths" title="Permalink to this heading"></a></h1>
+<dl class="py function">
+<dt class="sig sig-object py" id="browse_and_choose_file_paths.browse_and_select_files">
+<span class="sig-prename descclassname"><span class="pre">browse_and_choose_file_paths.</span></span><span class="sig-name descname"><span class="pre">browse_and_select_files</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">folder_path</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">root</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#browse_and_choose_file_paths.browse_and_select_files" title="Permalink to this definition"></a></dt>
+<dd><p>Browse and select files and folders from a specified folder path.</p>
+<p>This function provides a file browsing interface that allows the user to browse and select files and folders from a specified folder path. The selected files and folders are stored in separate lists and returned at the end of the browsing session.</p>
+<dl class="simple">
+<dt>Args:</dt><dd><p>folder_path (str): The path of the folder to browse.</p>
+</dd>
+<dt>Returns:</dt><dd><p>tuple: A tuple containing two lists. The first list contains the selected file paths, and the second list contains the selected folder paths.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="browse_and_choose_file_paths.browse_and_select_trees">
+<span class="sig-prename descclassname"><span class="pre">browse_and_choose_file_paths.</span></span><span class="sig-name descname"><span class="pre">browse_and_select_trees</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">standard_data_folder</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'C:/Users/fturi/Desktop/Dati'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">root</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#browse_and_choose_file_paths.browse_and_select_trees" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="browse_and_choose_file_paths.choose_file_paths">
+<span class="sig-prename descclassname"><span class="pre">browse_and_choose_file_paths.</span></span><span class="sig-name descname"><span class="pre">choose_file_paths</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">main_data_folder_path</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">root</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#browse_and_choose_file_paths.choose_file_paths" title="Permalink to this definition"></a></dt>
+<dd><p>Allows the user to select files and folders through browsing, removes nested paths, and returns the cleared file paths and parent folder paths.</p>
+<dl class="simple">
+<dt>Args:</dt><dd><p>main_data_folder_path (str): The path of the main data folder to browse.</p>
+</dd>
+<dt>Returns:</dt><dd><p>tuple: A tuple containing two lists - cleared_file_paths (list[str]): A list of cleared file paths that are not nested within any of the parent folder paths, and parent_folder_paths (list[str]): A list of parent folder paths without any nested folder paths.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="browse_and_choose_file_paths.get_main_data_folder_path">
+<span class="sig-prename descclassname"><span class="pre">browse_and_choose_file_paths.</span></span><span class="sig-name descname"><span class="pre">get_main_data_folder_path</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">data_folder_path</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'C:/Users/fturi/Desktop/Dati'</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#browse_and_choose_file_paths.get_main_data_folder_path" title="Permalink to this definition"></a></dt>
+<dd><p>Prompts the user to input the main folder path where all the data are saved.</p>
+<p>If no input is provided, a default folder path is used.
+If the user inputs ‘quit’ or ‘q’, the program stops.
+If the folder path is invalid, the user is prompted to input a valid path.</p>
+<p>Returns:
+- The user-provided folder path if it’s valid.
+- None if the program is stopped or the folder path is invalid.</p>
+</dd></dl>
+
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="user_interaction_doc.html" class="btn btn-neutral float-left" title="user_interaction.py" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="build_tree_doc.html" class="btn btn-neutral float-right" title="build_tree.py" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2023, Francesco Turini.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>
