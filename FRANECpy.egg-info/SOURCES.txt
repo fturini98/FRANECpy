@@ -1,0 +1,12 @@
+LICENSE
+README.md
+setup.py
+FRANECpy/__init__.py
+FRANECpy/browse_and_choose_file_paths.py
+FRANECpy/build_tree.py
+FRANECpy/user_interaction.py
+FRANECpy.egg-info/PKG-INFO
+FRANECpy.egg-info/SOURCES.txt
+FRANECpy.egg-info/dependency_links.txt
+FRANECpy.egg-info/requires.txt
+FRANECpy.egg-info/top_level.txt

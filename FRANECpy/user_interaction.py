@@ -3,8 +3,8 @@ from tkinter import ttk
 import threading
 import time
 #import pandasgui
-from build_tree import *
-from browse_and_choose_file_paths import *
+from FRANECpy.build_tree import *
+from FRANECpy.browse_and_choose_file_paths import *
 
 
 #Section of the code for load or create the tree, on dependence what the user choose
