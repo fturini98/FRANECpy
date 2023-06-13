@@ -10,7 +10,7 @@ import sys
 
 
 
-sys.path.insert(0, os.path.abspath('../../Scripts'))
+sys.path.insert(0, os.path.abspath('../../FRANECpy'))
 
 project = 'FRANECpy'
 copyright = '2023, Francesco Turini'
