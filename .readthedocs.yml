@@ -7,6 +7,3 @@ python:
   version: 3.8
   install:
     - requirements: Documentation/requirements.txt
-  system_packages: true
-  extra_requirements:
-    - FRANECpy
