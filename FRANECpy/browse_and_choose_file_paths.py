@@ -38,9 +38,9 @@ def get_main_data_folder_path(data_folder_path="C:/Users/fturi/Desktop/Dati"):
             print("\033[33mInvalid folder path! Please try again.\033[0m")
 
 def browse_and_select_files(folder_path,root=None):
-    """Browse and select files and folders from a specified folder path.
+    """Browse and select files and folders from a specified folder data path.
 
-    This function provides a file browsing interface that allows the user to browse and select files and folders from a specified folder path. The selected files and folders are stored in separate lists and returned at the end of the browsing session.
+    This function provides a file browsing interface that allows the user to browse and select files and folders from a specified folder data path. The selected files and folders are stored in separate lists and returned at the end of the browsing session.
 
     Args:
         folder_path (str): The path of the folder to browse.
@@ -383,7 +383,18 @@ def choose_file_paths(main_data_folder_path,root=None):
     return cleared_file_paths,parent_folder_paths
 
 def browse_and_select_trees(standard_data_folder="C:/Users/fturi/Desktop/Dati",root=None):
+    """
+    Browse and select trees from a specified folder path.
 
+    This function provides a tree browsing interface that allows the user to browse and select trees from a specified folder path. The selected trees are stored in a list and returned at the end of the browsing session.
+
+    Args:
+        standard_data_folder (str): The standard folder path where the tree data is located.
+        root: The Tkinter root window (optional).
+
+    Returns:
+        list: A list containing the selected tree paths.
+    """
     tree_folder=standard_data_folder+"/DataTrees"
 
     selected_trees=[]
@@ -416,6 +427,16 @@ def browse_and_select_trees(standard_data_folder="C:/Users/fturi/Desktop/Dati",r
                 listbox.insert(tk.END, item_signature + item)  # Prefix files with "[F]"
 
     def on_double_click(event):
+        """Toggle the selection of a tree when double-clicked in the listbox.
+
+        This function is called when a tree in the listbox is double-clicked. It toggles the selection of the tree by adding or removing its path from the selected_trees list. It also updates the listbox item to reflect the selection status.
+
+        Args:
+            event (tk.Event): The event object representing the double-click event.
+
+        Returns:
+            None
+        """
         selection = listbox.curselection()
         if selection:
             selected_item = listbox.get(selection[0])
@@ -489,5 +510,3 @@ def browse_and_select_trees(standard_data_folder="C:/Users/fturi/Desktop/Dati",r
     selected_trees=[s.replace("\\", "/") for s in selected_trees]
     return selected_trees
 
-#main_data_folder=get_main_data_folder_path()
-#test_file_paths,test_folder_paths = choose_file_paths(main_data_folder)

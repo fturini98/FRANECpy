@@ -231,7 +231,7 @@ def generate_tree(file_paths, folder_paths):
     Generates a hierarchical tree structure based on file paths and folder paths.
 
     The function extracts the common path, manages the folder paths, and builds a tree-like structure based on the file paths.
-
+    For doing thath it use the build_tree_from_paths function.
     Args:
         file_paths (list): A list of file paths to be processed.
         folder_paths (list): A list of folder paths to be processed.
@@ -253,15 +253,27 @@ def generate_tree(file_paths, folder_paths):
 #Section for implementing the saving and loading of trees
 
 def save_tree_with_shell(tree, folder_path):
+    """
+    Prompt the user to save a tree and serialize it to a file.
+
+    This function prompts the user to save a tree by providing a file name and saves the serialized tree to a specified folder path. The tree is serialized to JSON format before saving.
+
+    Args:
+        tree: The tree object to save.
+        folder_path (str): The folder path where the tree will be saved.
+
+    Returns:
+        None
+    """
     while True:
         save_tree = input("\033[34mDo you want to save the tree? (y/n): \033[0m")
-        if save_tree.lower() in ["y","yes"]:
+        if save_tree.lower() in ["y", "yes"]:
             break
-        if save_tree.lower() in ["n","no"]:
+        if save_tree.lower() in ["n", "no"]:
             print("\033[31mTree not saved.\033[0m")
             return
         else:
-            print("\033[33mInvalid option!Try again\033[0m")
+            print("\033[33mInvalid option! Try again.\033[0m")
 
     file_name = input("\033[34mEnter a file name: \033[0m")
     if not file_name:
@@ -292,6 +304,16 @@ def save_tree_with_shell(tree, folder_path):
 
     # Serialize the tree to JSON
     def serialize_tree(node):
+        """Serialize the tree to JSON format recursively.
+
+        This function serializes the tree object to JSON format. It handles dictionary nodes and pandas DataFrame nodes separately.
+
+        Args:
+            node: The current node in the tree.
+
+        Returns:
+            Serialized node in JSON format.
+        """
         if isinstance(node, dict):
             return {k: serialize_tree(v) for k, v in node.items()}
         elif isinstance(node, pd.DataFrame):
@@ -307,6 +329,17 @@ def save_tree_with_shell(tree, folder_path):
     print(f"\033[32mTree saved to {file_path}\033[0m")
 
 def load_tree_from_path(file_path):
+    """
+    Load a serialized tree from a file.
+
+    This function loads a serialized tree from a specified file path. The tree is deserialized, including any serialized DataFrames.
+
+    Args:
+        file_path (str): The path of the file containing the serialized tree.
+
+    Returns:
+        tuple: A tuple containing the loaded tree and the file name.
+    """
     # Check if the file exists
     if not os.path.isfile(file_path):
         raise FileNotFoundError(f"The specified file '{file_path}' does not exist.")
@@ -320,6 +353,16 @@ def load_tree_from_path(file_path):
 
     # Deserialize the tree, including DataFrames
     def deserialize_tree(node):
+        """Deserialize the tree from the serialized format.
+
+        This function deserializes the tree object from the serialized format. It handles dictionary nodes and serialized DataFrames separately.
+
+        Args:
+            node: The current node in the serialized tree.
+
+        Returns:
+            Deserialized node.
+        """
         if isinstance(node, dict):
             if "type" in node and node["type"] == "DataFrame":
                 # Convert the serialized DataFrame back to a DataFrame object
