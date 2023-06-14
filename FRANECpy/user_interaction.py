@@ -1,4 +1,3 @@
-from IPython.display import clear_output
 from tkinter import ttk
 import threading
 import time
@@ -162,41 +161,6 @@ def simple_browse(tree,root=None):
 
 #Function whith gui and return
 
-def jupyter_run_gui_function(tkinter_function, callback, *args, **kwargs):
-    """
-    Run a tkinter function in a separate thread within a Jupyter Notebook.
-
-    Parameters:
-        tkinter_function (callable): The tkinter function to run.
-        
-        callback (callable): The callback function to store the result.
-        
-        (*)args: Variable length argument list to be passed to the tkinter function.
-        
-        (**)kwargs: Arbitrary keyword arguments to be passed to the tkinter function.
-
-    Returns:
-        None
-    """
-    # Clear the current output in the Jupyter Notebook cell
-    clear_output(wait=True)
-    
-    # Create a separate thread to run the tkinter function
-    def thread_func():
-        root = kwargs.get('root', tk.Tk())
-        
-        # This is needed if you call the interactive function multiple times
-        root.protocol("WM_DELETE_WINDOW", root.destroy)  # Handle window close event
-        result = tkinter_function(root=root, *args, **kwargs)
-        root.mainloop()
-        
-        # Invoke the callback function with the result
-        callback(result)
-    
-    # Create a separate thread to run the tkinter function
-    thread = threading.Thread(target=thread_func)
-    thread.start()
-
 def jupyter_choose_file_paths(data_folder_path):
     """
     Choose file paths and folder paths using a file dialog within a Jupyter Notebook.
@@ -291,35 +255,31 @@ def jupyter_choose_tree_paths(data_folder_path):
 
 
 #Function whitout return
-def jupyter_run_gui_function_whitout_return(tkinter_function, *args, **kwargs):
+ 
+def jupyter_simple_browse(tree):
     """
-    Run a tkinter function in a separate thread within a Jupyter Notebook.
+    Launches a separate thread to run the 'simple_browse' function and provides a mechanism
+    to stop the thread when needed.
 
-    Parameters:
-        tkinter_function (callable): The tkinter function to run.
-        
-        (*)args: Variable length argument list to be passed to the tkinter function.
-        
-        (**)kwargs: Arbitrary keyword arguments to be passed to the tkinter function.
+    Args:
+        tree: The tree parameter to pass to the 'simple_browse' function.
 
     Returns:
         None
     """
-    # Clear the current output in the Jupyter Notebook cell
-    clear_output(wait=True)
-    
-    # Create a separate thread to run the tkinter function
-    def thread_func():
-        root = tk.Tk()
-        
-        #This is need it if you call the interactives function form multiple time, whitout this the kernell crash
-        root.protocol("WM_DELETE_WINDOW", root.destroy)  # Handle window close event
-        tkinter_function(root=root,*args, **kwargs)
-        root.mainloop()
-    
-    # Create a separate thread to run the tkinter function
-    thread = threading.Thread(target=thread_func)
+
+    # Create a stop event object
+    stop_event = threading.Event()
+
+    # Start the separate thread
+    thread = threading.Thread(target=simple_browse(tree))
     thread.start()
 
-def jupyter_simple_browse(tree):
-    jupyter_run_gui_function_whitout_return(simple_browse,tree)
+    # Wait for the thread to finish or the stop event to be set
+    while thread.is_alive() and not stop_event.is_set():
+        time.sleep(0.1)
+
+    # Check if the thread was stopped by the stop event
+    if stop_event.is_set():
+        # Join the thread to wait for its completion
+        thread.join()
