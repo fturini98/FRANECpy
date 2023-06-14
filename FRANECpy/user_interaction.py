@@ -157,6 +157,157 @@ def simple_browse(tree,root=None):
 
     root.mainloop()
 
+def complex_browse(tree,root=None):
+    if root==None:
+        root=tk.Tk()
+    node_dataframes = {}
+    
+    #local variables for data analysis
+    dataframes_for_analysis={}
+    
+    #define the fucntion for the buttons
+    press_duration=500 #ms
+    def on_right_button_press(event):
+        root.after(press_duration,lambda: open_context_menu(event))
+    
+    def on_right_button_relese(event):
+        root.after_cancel(open_context_menu)
+        
+    def on_right_button_motion(event):
+        item = treeview.identify_row(event.y)
+        if item:
+            treeview.selection_add(item)  # Add the item under the mouse to the selection
+
+    def on_left_button_press(event):
+        # Clear any previous selections
+        treeview.selection_set()
+
+        # Set the starting item for selection
+        global start_item
+        start_item = treeview.identify_row(event.y)
+    
+    def on_left_button_motion(event):
+        # Get the current item under the mouse cursor
+        current_item = treeview.identify_row(event.y)
+
+        # Select all items between start_item and current_item
+        items = treeview.tag_has("selected")
+        if start_item and current_item:
+            items_between = treeview.tag_has(treeview.index(start_item), treeview.index(current_item))
+            items = items_between if items else items_between - items
+
+        treeview.selection_set(items)
+    
+    def on_left_button_release(event):
+        # Reset the starting item
+        global start_item
+        start_item = None
+        
+    def add_item():
+        global type_of_file_selected
+        selected_items=treeview.selection()
+        for item in selected_items:
+            node_id = treeview.item(item, "text")
+            parent_item = treeview.parent(item)
+            parent_key = treeview.item(parent_item, "text")
+
+            if node_id in node_dataframes and not dataframes_for_analysis:
+                df = node_dataframes[node_id]
+            
+                grand_parent_item=treeview.parent(parent_item)
+                grand_parent_key=treeview.item(grand_parent_item, "text")
+            
+                type_of_file_selected=grand_parent_key
+            
+                if parent_key not in dataframes_for_analysis:
+                    dataframes_for_analysis[parent_key] = {}
+        
+                dataframes_for_analysis[parent_key][node_id] = df
+        
+            elif node_id in node_dataframes:
+                df = node_dataframes[node_id]
+        
+                if parent_key not in dataframes_for_analysis:
+                    dataframes_for_analysis[parent_key] = {}
+        
+                dataframes_for_analysis[parent_key][node_id] = df
+        
+            elif not dataframes_for_analysis and parent_key=="RID" :
+                type_of_file_selected="RID"
+                print("Ciao")
+            elif parent_key=="RID" and type_of_file_selected=="RID":
+                print("weee")
+
+        update_list()
+    
+    
+    
+    def populate_treeview(parent, node):
+        for key, value in node.items():
+            item = treeview.insert(parent, "end", text=key)
+            if isinstance(value, pd.DataFrame):
+                node_id = treeview.item(item, "text")
+                node_dataframes[node_id] = value
+            elif isinstance(value, dict):
+                populate_treeview(item, value)
+
+    def update_list():
+        listbox.delete(0, tk.END)
+        for parent_key, node_dataframes in dataframes_for_analysis.items():
+            for node_id, dataframe in node_dataframes.items():
+                listbox.insert(tk.END, f"Parent: {parent_key} | Node: {node_id} | Shape: {dataframe.shape}")
+
+
+    #calling root=tk.Tk() is need it for porting to the jupyter function
+    root.title("Tree Browser")
+
+    treeview = ttk.Treeview(root)
+    treeview.pack(expand=True, fill="both")
+
+    populate_treeview("", tree)
+
+    
+    # Create the menu
+    def open_context_menu(event):
+        item = treeview.identify_row(event.y)
+        context_menu = tk.Menu(root, tearoff=0)
+        if item:
+            treeview.selection_set(item)
+            context_menu.add_command(label="Add item",command=add_item)
+            context_menu.add_separator()
+            context_menu.add_command(label="Do Nothing")
+            context_menu.tk_popup(event.x_root, event.y_root)
+    
+    
+    # Bind the right button press event
+    treeview.bind("<ButtonPress-3>", on_right_button_press)
+    treeview.bind("<ButtonRelease-3>", on_right_button_relese)
+    
+    # Bind the left button events
+    treeview.bind("<ButtonPress-1>", on_left_button_press)
+    treeview.bind("<B1-Motion>", on_left_button_motion)
+    treeview.bind("<ButtonRelease-1>", on_left_button_release)
+    
+    
+    #Listbox
+    frame = tk.Frame(root)
+    frame.pack(fill="both")
+
+    listbox = tk.Listbox(frame)
+    listbox.pack(side="left", fill="both", expand=True)
+
+    scrollbar = tk.Scrollbar(frame)
+    scrollbar.pack(side="right", fill="y")
+
+    listbox.config(yscrollcommand=scrollbar.set)
+    scrollbar.config(command=listbox.yview)
+
+    #listbox.bind("<<ListboxSelect>>", on_listbox_select)
+
+    update_list()
+
+    root.mainloop()
+
 #Section for porting the program to the jupyter notebook
 
 #Function whith gui and return
@@ -283,3 +434,32 @@ def jupyter_simple_browse(tree):
     if stop_event.is_set():
         # Join the thread to wait for its completion
         thread.join()
+ 
+def jupyter_complex_browse(tree):
+    """
+    Launches a separate thread to run the 'complex_browse' function and provides a mechanism
+    to stop the thread when needed.
+
+    Args:
+        tree: The tree parameter to pass to the 'simple_browse' function.
+
+    Returns:
+        None
+    """
+
+    # Create a stop event object
+    stop_event = threading.Event()
+
+    # Start the separate thread
+    thread = threading.Thread(target=complex_browse(tree))
+    thread.start()
+
+    # Wait for the thread to finish or the stop event to be set
+    while thread.is_alive() and not stop_event.is_set():
+        time.sleep(0.1)
+
+    # Check if the thread was stopped by the stop event
+    if stop_event.is_set():
+        # Join the thread to wait for its completion
+        thread.join()
+        
