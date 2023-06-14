@@ -72,6 +72,33 @@
              
   <section id="welcome-to-franecpy-s-documentation">
 <h1>Welcome to FRANECpy’s documentation!<a class="headerlink" href="#welcome-to-franecpy-s-documentation" title="Permalink to this heading"></a></h1>
+<p>This library is created to analyze the FRANEC program output.
+The main goal of this library is creating an interactive whindow tho choose and import, in a tree format (managed via dictionary and dataframes), the data taken from the files.dat, provided by the FRANEC simulations, to analyze it.
+These tree colud be saved and reloaded if you want to make the data analysis faster.</p>
+<p>We tried to port the functions into the jupyter environment, even though the kernel crashes from time to time, the functions actually work.</p>
+<section id="most-uselful-functions">
+<h2>Most uselful functions:<a class="headerlink" href="#most-uselful-functions" title="Permalink to this heading"></a></h2>
+<dl class="field-list simple">
+<dt class="field-odd">usere_interaction module<span class="colon">:</span></dt>
+<dd class="field-odd"><p></p></dd>
+</dl>
+<ul class="simple">
+<li><dl class="simple">
+<dt><em>itree_call()</em>:</dt><dd><p>When you call this function it creates an interactive window where you choose to import or create data trees. The function returns a data tree.</p>
+</dd>
+</dl>
+</li>
+<li><dl class="simple">
+<dt><em>load_trees(list(files paths))</em>:</dt><dd><p>When you call this function it loads the trees that you have alredy saved from their files phats. It return a data tree whit all the trees that you have chosen.</p>
+</dd>
+</dl>
+</li>
+<li><dl class="simple">
+<dt><em>jupyter_simple_browse(tree)</em>:</dt><dd><p>When you call the function it opens a window to browse the tree. It works also in jupyter enviroment.</p>
+</dd>
+</dl>
+</li>
+</ul>
 <div class="toctree-wrapper compound">
 <p class="caption" role="heading"><span class="caption-text">Contents:</span></p>
 <ul>
@@ -83,6 +110,7 @@
 </li>
 </ul>
 </div>
+</section>
 </section>
 <section id="indices-and-tables">
 <h1>Indices and tables<a class="headerlink" href="#indices-and-tables" title="Permalink to this heading"></a></h1>

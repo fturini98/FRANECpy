@@ -83,13 +83,14 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
            <div itemprop="articleBody">
              
-  <section id="module-browse_and_choose_file_paths">
-<span id="browse-and-choose-file-paths-py"></span><h1>browse_and_choose_file_paths.py<a class="headerlink" href="#module-browse_and_choose_file_paths" title="Permalink to this heading"></a></h1>
-<dl class="py function">
+  <section id="browse-and-choose-file-paths-py">
+<h1>browse_and_choose_file_paths.py<a class="headerlink" href="#browse-and-choose-file-paths-py" title="Permalink to this heading"></a></h1>
+<p>This module retrieves the file paths. In input, it needs the main data folder path.</p>
+<span class="target" id="module-browse_and_choose_file_paths"></span><dl class="py function">
 <dt class="sig sig-object py" id="browse_and_choose_file_paths.browse_and_select_files">
 <span class="sig-prename descclassname"><span class="pre">browse_and_choose_file_paths.</span></span><span class="sig-name descname"><span class="pre">browse_and_select_files</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">folder_path</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">root</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#browse_and_choose_file_paths.browse_and_select_files" title="Permalink to this definition"></a></dt>
-<dd><p>Browse and select files and folders from a specified folder path.</p>
-<p>This function provides a file browsing interface that allows the user to browse and select files and folders from a specified folder path. The selected files and folders are stored in separate lists and returned at the end of the browsing session.</p>
+<dd><p>Browse and select files and folders from a specified folder data path.</p>
+<p>This function provides a file browsing interface that allows the user to browse and select files and folders from a specified folder data path. The selected files and folders are stored in separate lists and returned at the end of the browsing session.</p>
 <dl class="simple">
 <dt>Args:</dt><dd><p>folder_path (str): The path of the folder to browse.</p>
 </dd>
@@ -101,7 +102,16 @@
 <dl class="py function">
 <dt class="sig sig-object py" id="browse_and_choose_file_paths.browse_and_select_trees">
 <span class="sig-prename descclassname"><span class="pre">browse_and_choose_file_paths.</span></span><span class="sig-name descname"><span class="pre">browse_and_select_trees</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">standard_data_folder</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'C:/Users/fturi/Desktop/Dati'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">root</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#browse_and_choose_file_paths.browse_and_select_trees" title="Permalink to this definition"></a></dt>
-<dd></dd></dl>
+<dd><p>Browse and select trees from a specified folder path.</p>
+<p>This function provides a tree browsing interface that allows the user to browse and select trees from a specified folder path. The selected trees are stored in a list and returned at the end of the browsing session.</p>
+<dl class="simple">
+<dt>Args:</dt><dd><p>standard_data_folder (str): The standard folder path where the tree data is located.
+root: The Tkinter root window (optional).</p>
+</dd>
+<dt>Returns:</dt><dd><p>list: A list containing the selected tree paths.</p>
+</dd>
+</dl>
+</dd></dl>
 
 <dl class="py function">
 <dt class="sig sig-object py" id="browse_and_choose_file_paths.choose_file_paths">

@@ -47,13 +47,16 @@
 <li class="toctree-l2"><a class="reference internal" href="user_interaction_doc.html">user_interaction.py</a></li>
 <li class="toctree-l2"><a class="reference internal" href="browse_and_choose_file_paths_doc.html">browse_and_choose_file_paths.py</a></li>
 <li class="toctree-l2 current"><a class="current reference internal" href="#">build_tree.py</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="#build_tree.build_tree_from_paths"><code class="docutils literal notranslate"><span class="pre">build_tree_from_paths()</span></code></a></li>
-<li class="toctree-l3"><a class="reference internal" href="#build_tree.extract_root_path_and_name"><code class="docutils literal notranslate"><span class="pre">extract_root_path_and_name()</span></code></a></li>
-<li class="toctree-l3"><a class="reference internal" href="#build_tree.generate_tree"><code class="docutils literal notranslate"><span class="pre">generate_tree()</span></code></a></li>
-<li class="toctree-l3"><a class="reference internal" href="#build_tree.load_tree_from_path"><code class="docutils literal notranslate"><span class="pre">load_tree_from_path()</span></code></a></li>
-<li class="toctree-l3"><a class="reference internal" href="#build_tree.manage_RID_folders"><code class="docutils literal notranslate"><span class="pre">manage_RID_folders()</span></code></a></li>
-<li class="toctree-l3"><a class="reference internal" href="#build_tree.manage_folders"><code class="docutils literal notranslate"><span class="pre">manage_folders()</span></code></a></li>
-<li class="toctree-l3"><a class="reference internal" href="#build_tree.save_tree_with_shell"><code class="docutils literal notranslate"><span class="pre">save_tree_with_shell()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#module-build_tree">Functions:</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#build_tree.build_tree_from_paths"><code class="docutils literal notranslate"><span class="pre">build_tree_from_paths()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#build_tree.extract_root_path_and_name"><code class="docutils literal notranslate"><span class="pre">extract_root_path_and_name()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#build_tree.generate_tree"><code class="docutils literal notranslate"><span class="pre">generate_tree()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#build_tree.load_tree_from_path"><code class="docutils literal notranslate"><span class="pre">load_tree_from_path()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#build_tree.manage_RID_folders"><code class="docutils literal notranslate"><span class="pre">manage_RID_folders()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#build_tree.manage_folders"><code class="docutils literal notranslate"><span class="pre">manage_folders()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#build_tree.save_tree_with_shell"><code class="docutils literal notranslate"><span class="pre">save_tree_with_shell()</span></code></a></li>
+</ul>
+</li>
 </ul>
 </li>
 </ul>
@@ -85,8 +88,17 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
            <div itemprop="articleBody">
              
-  <section id="module-build_tree">
-<span id="build-tree-py"></span><h1>build_tree.py<a class="headerlink" href="#module-build_tree" title="Permalink to this heading"></a></h1>
+  <section id="build-tree-py">
+<h1>build_tree.py<a class="headerlink" href="#build-tree-py" title="Permalink to this heading"></a></h1>
+<p>This module from the file paths manages the folders and builds the data tree.</p>
+<dl>
+<dt><strong>Attention:</strong></dt><dd><p>The biggest folder that you can  choose are <em>tools-driver-out</em> and <em>tools-isocrone-out</em>.</p>
+<p>They <strong>must named like this</strong> else they are excluded form the tree.
+If you want to change these conditions you must change the function <em>manage_folders</em>.</p>
+</dd>
+</dl>
+<section id="module-build_tree">
+<span id="functions"></span><h2>Functions:<a class="headerlink" href="#module-build_tree" title="Permalink to this heading"></a></h2>
 <dl class="py function">
 <dt class="sig sig-object py" id="build_tree.build_tree_from_paths">
 <span class="sig-prename descclassname"><span class="pre">build_tree.</span></span><span class="sig-name descname"><span class="pre">build_tree_from_paths</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">file_paths</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">common_path</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#build_tree.build_tree_from_paths" title="Permalink to this definition"></a></dt>
@@ -121,7 +133,8 @@ folder_paths (list): List of folder paths.</p>
 <dt class="sig sig-object py" id="build_tree.generate_tree">
 <span class="sig-prename descclassname"><span class="pre">build_tree.</span></span><span class="sig-name descname"><span class="pre">generate_tree</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">file_paths</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">folder_paths</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#build_tree.generate_tree" title="Permalink to this definition"></a></dt>
 <dd><p>Generates a hierarchical tree structure based on file paths and folder paths.</p>
-<p>The function extracts the common path, manages the folder paths, and builds a tree-like structure based on the file paths.</p>
+<p>The function extracts the common path, manages the folder paths, and builds a tree-like structure based on the file paths.
+For doing thath it use the build_tree_from_paths function.</p>
 <dl class="simple">
 <dt>Args:</dt><dd><p>file_paths (list): A list of file paths to be processed.
 folder_paths (list): A list of folder paths to be processed.</p>
@@ -134,7 +147,15 @@ folder_paths (list): A list of folder paths to be processed.</p>
 <dl class="py function">
 <dt class="sig sig-object py" id="build_tree.load_tree_from_path">
 <span class="sig-prename descclassname"><span class="pre">build_tree.</span></span><span class="sig-name descname"><span class="pre">load_tree_from_path</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">file_path</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#build_tree.load_tree_from_path" title="Permalink to this definition"></a></dt>
-<dd></dd></dl>
+<dd><p>Load a serialized tree from a file.</p>
+<p>This function loads a serialized tree from a specified file path. The tree is deserialized, including any serialized DataFrames.</p>
+<dl class="simple">
+<dt>Args:</dt><dd><p>file_path (str): The path of the file containing the serialized tree.</p>
+</dd>
+<dt>Returns:</dt><dd><p>tuple: A tuple containing the loaded tree and the file name.</p>
+</dd>
+</dl>
+</dd></dl>
 
 <dl class="py function">
 <dt class="sig sig-object py" id="build_tree.manage_RID_folders">
@@ -167,8 +188,18 @@ file_paths (list): A list to store the file paths of interest.</p>
 <dl class="py function">
 <dt class="sig sig-object py" id="build_tree.save_tree_with_shell">
 <span class="sig-prename descclassname"><span class="pre">build_tree.</span></span><span class="sig-name descname"><span class="pre">save_tree_with_shell</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">tree</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">folder_path</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#build_tree.save_tree_with_shell" title="Permalink to this definition"></a></dt>
-<dd></dd></dl>
+<dd><p>Prompt the user to save a tree and serialize it to a file.</p>
+<p>This function prompts the user to save a tree by providing a file name and saves the serialized tree to a specified folder path. The tree is serialized to JSON format before saving.</p>
+<dl class="simple">
+<dt>Args:</dt><dd><p>tree: The tree object to save.
+folder_path (str): The folder path where the tree will be saved.</p>
+</dd>
+<dt>Returns:</dt><dd><p>None</p>
+</dd>
+</dl>
+</dd></dl>
 
+</section>
 </section>
 
 

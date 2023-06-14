@@ -232,6 +232,7 @@ def generate_tree(file_paths, folder_paths):
 
     The function extracts the common path, manages the folder paths, and builds a tree-like structure based on the file paths.
     For doing thath it use the build_tree_from_paths function.
+    
     Args:
         file_paths (list): A list of file paths to be processed.
         folder_paths (list): A list of folder paths to be processed.

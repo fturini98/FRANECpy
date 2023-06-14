@@ -48,7 +48,6 @@
 <li class="toctree-l2 current"><a class="current reference internal" href="#">user_interaction.py</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="#user_interaction.browse_load_trees"><code class="docutils literal notranslate"><span class="pre">browse_load_trees()</span></code></a></li>
 <li class="toctree-l3"><a class="reference internal" href="#user_interaction.choose_open_or_create_tree"><code class="docutils literal notranslate"><span class="pre">choose_open_or_create_tree()</span></code></a></li>
-<li class="toctree-l3"><a class="reference internal" href="#user_interaction.hello"><code class="docutils literal notranslate"><span class="pre">hello()</span></code></a></li>
 <li class="toctree-l3"><a class="reference internal" href="#user_interaction.jupyter_choose_file_paths"><code class="docutils literal notranslate"><span class="pre">jupyter_choose_file_paths()</span></code></a></li>
 <li class="toctree-l3"><a class="reference internal" href="#user_interaction.jupyter_choose_tree_paths"><code class="docutils literal notranslate"><span class="pre">jupyter_choose_tree_paths()</span></code></a></li>
 <li class="toctree-l3"><a class="reference internal" href="#user_interaction.jupyter_run_gui_function"><code class="docutils literal notranslate"><span class="pre">jupyter_run_gui_function()</span></code></a></li>
@@ -95,28 +94,50 @@
 <dl class="py function">
 <dt class="sig sig-object py" id="user_interaction.browse_load_trees">
 <span class="sig-prename descclassname"><span class="pre">user_interaction.</span></span><span class="sig-name descname"><span class="pre">browse_load_trees</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">data_folder_paths</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#user_interaction.browse_load_trees" title="Permalink to this definition"></a></dt>
-<dd></dd></dl>
+<dd><p>Browse and load trees from the specified data folder paths.</p>
+<p>This function prompts the user to browse and select tree files from the specified data folder paths. It then loads the selected tree files using the <cite>load_trees</cite> function and returns the loaded trees.</p>
+<dl class="simple">
+<dt>Args:</dt><dd><p>data_folder_paths (list): A list of data folder paths to browse for tree files.</p>
+</dd>
+<dt>Returns:</dt><dd><p>dict: A dictionary containing the loaded trees and the tree paths.</p>
+</dd>
+</dl>
+</dd></dl>
 
 <dl class="py function">
 <dt class="sig sig-object py" id="user_interaction.choose_open_or_create_tree">
 <span class="sig-prename descclassname"><span class="pre">user_interaction.</span></span><span class="sig-name descname"><span class="pre">choose_open_or_create_tree</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#user_interaction.choose_open_or_create_tree" title="Permalink to this definition"></a></dt>
-<dd></dd></dl>
-
-<dl class="py function">
-<dt class="sig sig-object py" id="user_interaction.hello">
-<span class="sig-prename descclassname"><span class="pre">user_interaction.</span></span><span class="sig-name descname"><span class="pre">hello</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#user_interaction.hello" title="Permalink to this definition"></a></dt>
-<dd><p>Test per vedere come funziona il pacchetto e l’upgrade.</p>
+<dd><p>Prompt the user to choose between loading existing trees or creating a new one.</p>
+<p>This function continuously prompts the user to choose between loading existing trees or creating a new one until a valid choice is made.</p>
+<dl class="simple">
+<dt>Returns:</dt><dd><p>str: The user’s choice, either “create” or “load”.</p>
+</dd>
+</dl>
 </dd></dl>
 
 <dl class="py function">
 <dt class="sig sig-object py" id="user_interaction.jupyter_choose_file_paths">
 <span class="sig-prename descclassname"><span class="pre">user_interaction.</span></span><span class="sig-name descname"><span class="pre">jupyter_choose_file_paths</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">data_folder_path</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#user_interaction.jupyter_choose_file_paths" title="Permalink to this definition"></a></dt>
-<dd></dd></dl>
+<dd><p>Choose file paths and folder paths using a file dialog within a Jupyter Notebook.</p>
+<dl class="simple">
+<dt>Parameters:</dt><dd><p>data_folder_path (str): The path to the data folder.</p>
+</dd>
+<dt>Returns:</dt><dd><p>tuple: A tuple containing the selected file paths and folder paths.</p>
+</dd>
+</dl>
+</dd></dl>
 
 <dl class="py function">
 <dt class="sig sig-object py" id="user_interaction.jupyter_choose_tree_paths">
 <span class="sig-prename descclassname"><span class="pre">user_interaction.</span></span><span class="sig-name descname"><span class="pre">jupyter_choose_tree_paths</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">data_folder_path</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#user_interaction.jupyter_choose_tree_paths" title="Permalink to this definition"></a></dt>
-<dd></dd></dl>
+<dd><p>Choose tree paths using a file dialog within a Jupyter Notebook.</p>
+<dl class="simple">
+<dt>Parameters:</dt><dd><p>data_folder_path (str): The path to the data folder.</p>
+</dd>
+<dt>Returns:</dt><dd><p>list: A list of selected tree paths.</p>
+</dd>
+</dl>
+</dd></dl>
 
 <dl class="py function">
 <dt class="sig sig-object py" id="user_interaction.jupyter_run_gui_function">
@@ -155,7 +176,15 @@
 <dl class="py function">
 <dt class="sig sig-object py" id="user_interaction.load_trees">
 <span class="sig-prename descclassname"><span class="pre">user_interaction.</span></span><span class="sig-name descname"><span class="pre">load_trees</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">tree_paths</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#user_interaction.load_trees" title="Permalink to this definition"></a></dt>
-<dd></dd></dl>
+<dd><p>Load multiple trees from the specified file paths.</p>
+<p>This function loads multiple trees from the given file paths and stores them in a dictionary, where the keys are the tree names (derived from the file names) and the values are the loaded trees. It also includes a special “paths” branch in the dictionary, which contains all the tree paths.</p>
+<dl class="simple">
+<dt>Args:</dt><dd><p>tree_paths (list): A list of file paths to the tree files.</p>
+</dd>
+<dt>Returns:</dt><dd><p>dict: A dictionary containing the loaded trees and the tree paths.</p>
+</dd>
+</dl>
+</dd></dl>
 
 <dl class="py function">
 <dt class="sig sig-object py" id="user_interaction.simple_browse">
@@ -165,7 +194,19 @@
 <dl class="py function">
 <dt class="sig sig-object py" id="user_interaction.tree_call">
 <span class="sig-prename descclassname"><span class="pre">user_interaction.</span></span><span class="sig-name descname"><span class="pre">tree_call</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">standard_data_folder</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'C:/Users/fturi/Desktop/Dati'</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#user_interaction.tree_call" title="Permalink to this definition"></a></dt>
-<dd></dd></dl>
+<dd><p>Perform the tree call operation based on user choice.</p>
+<p>This function performs the tree call operation based on the user’s choice of creating a new tree or loading existing trees.
+It interacts with the user to select files and folders, generate trees, and save or load trees accordingly.</p>
+<dl class="simple">
+<dt>Args:</dt><dd><p>standard_data_folder (str): The standard data folder path. Default is “C:/Users/fturi/Desktop/Dati”.</p>
+</dd>
+<dt>Returns:</dt><dd><dl class="simple">
+<dt>dict or Tree: If a new tree is created, it returns the generated tree object.</dt><dd><p>If existing trees are loaded, it returns a dictionary containing the loaded trees.</p>
+</dd>
+</dl>
+</dd>
+</dl>
+</dd></dl>
 
 </section>
 
