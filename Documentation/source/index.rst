@@ -14,9 +14,9 @@ We tried to port the functions into the jupyter environment, even though the ker
 Most uselful functions:
 ------------------------
 
-:usere_interaction module:
+:usere_interface module:
 
-- *itree_call()*:   
+- *tree_call()*:   
    When you call this function it creates an interactive window where you choose to import or create data trees. The function returns a data tree.
 
 - *load_trees(list(files paths))*: 

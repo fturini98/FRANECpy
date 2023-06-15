@@ -1,4 +1,4 @@
-user_interaction.py
+user_interface.py
 ===================
 
 This module provide an user interface using the functions defined in the modules **browse_and_choose_file_paths** and **build_tree** .
@@ -6,6 +6,6 @@ This module provide an user interface using the functions defined in the modules
 Functions:
 ----------
 
-.. automodule:: user_interaction
+.. automodule:: user_interface
    :members:
    :undoc-members:
