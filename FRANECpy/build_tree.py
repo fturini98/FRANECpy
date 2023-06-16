@@ -50,6 +50,22 @@ def manage_RID_folders(folder_path, file_paths):
     # Return the updated file_paths list
     return file_paths
 
+def manage_ISO_folders(folder_path, file_paths):
+    # Retrieve the list of files within the folder path
+    sub_files = os.listdir(folder_path)
+
+    # Iterate over each file in the list
+    for sub_file in sub_files:
+        # Check if the file has a ".DAT" extension
+        if sub_file.startswith("AGE"):
+            # Construct the full file path
+            file_path = folder_path + "/" + sub_file
+            # Append the file path to the file_paths list
+            file_paths.append(file_path)
+
+    # Return the updated file_paths list
+    return file_paths    
+
 def manage_folders(folder_paths, file_paths):
     """
     Manages the folder paths and generates a list of file paths of interest.
@@ -83,7 +99,8 @@ def manage_folders(folder_paths, file_paths):
 
         # Manage the ISO folders
         elif folder_name.startswith("ISO"):
-            print("\033[31mISO folders are not implemented. Excluding:", folder_name, "\033[0m")
+            file_paths= manage_ISO_folders(folder_path, file_paths)
+            #print("\033[31mISO folders are not implemented. Excluding:", folder_name, "\033[0m")
 
         # Manage the RID folders
         elif folder_name.startswith("RID"):
@@ -96,6 +113,9 @@ def manage_folders(folder_paths, file_paths):
                 if sub_folder.startswith("RID"):
                     sub_folder_path = folder_path + "/" + sub_folder
                     file_paths = manage_RID_folders(sub_folder_path, file_paths)
+                if sub_folder.startswith("ISO"):
+                    sub_folder_path = folder_path + "/" + sub_folder
+                    file_paths = manage_ISO_folders(sub_folder_path, file_paths)
         
         #Manage the folders that aren't tools-isocrone-out or tools-driver-out
         else:
@@ -159,7 +179,28 @@ def build_tree_from_paths(file_paths, common_path):
 
                 # Move to the metallicity branch
                 current_node = current_node[z_he__mx]
+            
+            # Check if the component of the path is a ISO folder
+            if component.startswith("ISO"):
+                # Find and extract the metallicity value
+                matches = re.match(r"ISO_(Z[\d.]+_He[\d.]+_ML[\d.]+)_", component)
+                
+                z_he__mx = matches.group(1)
+                
+                # If the ISO branch doesn't already exist, create it
+                if "ISO" not in current_node:
+                    current_node["ISO"] = {}
 
+                # Move to the RID branch
+                current_node = current_node["ISO"]
+
+                # Create the metallicity branch if it doesn't exist
+                if z_he__mx not in current_node:
+                    current_node[z_he__mx] = {}
+
+                # Move to the metallicity branch
+                current_node = current_node[z_he__mx]
+            
             # Manage the folder inside the tools/driver/out folder
             elif component.startswith("M"):
                 # Create the RAW branch if it isn't already present, this is done to have the same depth for all dataframes
@@ -186,6 +227,24 @@ def build_tree_from_paths(file_paths, common_path):
                 if Mass_value not in current_node:
                     current_node[Mass_value] = {}
 
+            # Load the AGE.dat as a dataframe with their specific formatting
+            elif i == len(components) - 1 and component.endswith(".DAT") and component.startswith("AGE"):
+                # Extract the mass value
+                matches = re.match(r"(AGE[\d.]+)_", component)
+                
+                AGE = matches.group(1)
+
+                # Define the variable/column names
+                variable_names = ['LOG L/Lo', 'LOG TE (K)', 'Mass/Mo', 'R/Ro', 'LOG g', '[Fe/H]']
+
+                # Read the data from the file into a dataframe
+                df = pd.read_csv(path, comment='#', delimiter='\s+', header=None, engine='python')
+
+                # Assign the variable/column names to the dataframe columns
+                df.columns = variable_names
+
+                current_node[AGE] = df
+                           
             # Load the RID.dat as a dataframe with their specific formatting
             elif i == len(components) - 1 and component.endswith(".DAT") and component.startswith("AOUT"):
                 # Extract the mass value
@@ -219,7 +278,7 @@ def build_tree_from_paths(file_paths, common_path):
                 # So the only thing to do is to link the dataframe at the leaf address.
                 current_node[Mass_value] = df
 
-            if not component.startswith("RID") and not component.startswith("AOUT") and not component.startswith("M") and not component.startswith("OUT"):
+            if not component.startswith("RID") and not component.startswith("AOUT") and not component.startswith("M") and not component.startswith("OUT") and not component.startswith("ISO") and not component.startswith("AGE"):
                 # Check if the component branch exists; if not, create it
                 if component not in current_node:
                     current_node[component] = {}
