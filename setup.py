@@ -10,6 +10,7 @@ setup(
     install_requires=[
         'pandas',
         'ipython',
+        'matplotlib',
     ],
     classifiers=[
         'Programming Language :: Python :: 3',
