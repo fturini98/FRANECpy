@@ -103,6 +103,8 @@ def manage_folders(folder_paths, file_paths):
 
     return file_paths
 
+##Section wher the tree is build:
+
 def build_tree_from_paths(file_paths, common_path):
     """
     Builds a hierarchical tree structure from a list of file paths.
@@ -377,3 +379,25 @@ def load_tree_from_path(file_path):
     tree = deserialize_tree(serialized_tree)
 
     return tree, file_name
+
+def load_trees(tree_paths):
+    """
+    Load multiple trees from the specified file paths.
+
+    This function loads multiple trees from the given file paths and stores them in a dictionary, where the keys are the tree names (derived from the file names) and the values are the loaded trees. It also includes a special "paths" branch in the dictionary, which contains all the tree paths.
+
+    Args:
+        tree_paths (list): A list of file paths to the tree files.
+
+    Returns:
+        dict: A dictionary containing the loaded trees and the tree paths.
+    """
+    trees = {}
+    for tree_path in tree_paths:
+        tree, tree_name = load_tree_from_path(tree_path)
+        trees[tree_name] = tree
+
+    # Create a branch for saving all the tree paths
+    trees["paths"] = tree_paths
+
+    return trees

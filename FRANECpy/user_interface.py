@@ -31,28 +31,6 @@ def choose_open_or_create_tree():
         else:
             print("\033[33mInvalid choice! Please try again.\033[0m")
 
-def load_trees(tree_paths):
-    """
-    Load multiple trees from the specified file paths.
-
-    This function loads multiple trees from the given file paths and stores them in a dictionary, where the keys are the tree names (derived from the file names) and the values are the loaded trees. It also includes a special "paths" branch in the dictionary, which contains all the tree paths.
-
-    Args:
-        tree_paths (list): A list of file paths to the tree files.
-
-    Returns:
-        dict: A dictionary containing the loaded trees and the tree paths.
-    """
-    trees = {}
-    for tree_path in tree_paths:
-        tree, tree_name = load_tree_from_path(tree_path)
-        trees[tree_name] = tree
-
-    # Create a branch for saving all the tree paths
-    trees["paths"] = tree_paths
-
-    return trees
-
 def browse_load_trees(data_folder_paths):
     """
     Browse and load trees from the specified data folder paths.
@@ -156,6 +134,15 @@ def simple_browse(tree,root=None):
     #treeview.bind("<<TreeviewSelect>>", on_tree_select)
 
     root.mainloop()
+
+
+def print_tree(tree, indent=''):
+    for key, value in tree.items():
+        if isinstance(value, dict):
+            print(f"{indent}{key}")
+            print_tree(value, indent + '  ')
+        elif isinstance(value,(list)):
+            print(f"{indent}{key}")
 
 #Section for porting the program to the jupyter notebook
 

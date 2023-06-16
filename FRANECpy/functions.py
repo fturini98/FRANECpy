@@ -3,14 +3,6 @@ import matplotlib.pyplot as plt
 import sys
 import re
 
-def print_tree(tree, indent=''):
-    for key, value in tree.items():
-        if isinstance(value, dict):
-            print(f"{indent}{key}")
-            print_tree(value, indent + '  ')
-        elif isinstance(value,(list)):
-            print(f"{indent}{key}")
-
 def clear_tree(tree, target_name):
     cleared_tree = {}
 
