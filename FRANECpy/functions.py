@@ -69,7 +69,7 @@ def HR_plot_equal_mass(tree,mass,Z_min=None,Z_max=None,He_min=None,He_max=None):
             print(f"Helium or metallicity out of range. Excluding Z:{Z} and He:{He}") 
         else:
             df=tree[metal][mass]
-            plt.plot(df["LOG_TE_(K)"], df["LOG_L/Lo"], label=f"Mass {mass} ({metal})")
+            plt.plot(df["LOG_TE_(K)"], df["LOG_L/Lo"], label=f"Composition ({metal})")
     
     # Customize the plot
     plt.xlabel("LOG_TE_(K)")
@@ -97,10 +97,16 @@ def HR_plot_RID(tree,equal="metallicity",mass_min=None,mass_max=None,Z_min=None,
                 HR_plot_equal_metall(tree,metal,mass_min,mass_max)
                 
     elif equal in ["mass", "Mass"]:
+        mass_in_range=[]
+        #extract all the mass in range [mass_min, mass_max]
         for metal,masses in tree.items():
             for mass in masses:
                 match = re.search(r'M([\d.]+)', mass)
                 mass=float(match.group(1))
                 if (mass_min is None or mass_min<= mass) and (mass_max is None or mass<=mass_max):
-                    print("mass")
-                    HR_plot_equal_mass(tree,mass,Z_min=None,Z_max=None,He_min=None,He_max=None)
+                    if mass not in mass_in_range:
+                        mass_in_range.append(mass)
+        
+        #make a plot for each mass in range.        
+        for mass in mass_in_range:
+            HR_plot_equal_mass(tree,mass,Z_min=None,Z_max=None,He_min=None,He_max=None)
