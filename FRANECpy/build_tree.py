@@ -235,7 +235,7 @@ def build_tree_from_paths(file_paths, common_path):
                 AGE = matches.group(1)
 
                 # Define the variable/column names
-                variable_names = ['LOG L/Lo', 'LOG TE (K)', 'Mass/Mo', 'R/Ro', 'LOG g', '[Fe/H]']
+                variable_names = ['LOG_L/Lo', 'LOG_TE_(K)', 'Mass/Mo', 'R/Ro', 'LOG g', '[Fe/H]']
 
                 # Read the data from the file into a dataframe
                 df = pd.read_csv(path, comment='#', delimiter='\s+', header=None, engine='python')
