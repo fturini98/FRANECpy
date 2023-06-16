@@ -40,6 +40,7 @@ def HR_plot_equal_metall(tree,metal,mass_min=None,mass_max=None):
     plt.xlabel("LOG_TE_(K)")
     plt.ylabel("LOG_L/Lo")
     plt.title(f"Different mass for {metal}")
+    plt.gca().invert_xaxis()
     plt.legend()
     plt.grid(True)
 
@@ -47,7 +48,6 @@ def HR_plot_equal_metall(tree,metal,mass_min=None,mass_max=None):
     plt.show()
 
 def HR_plot_equal_mass(tree,mass,Z_min=None,Z_max=None,He_min=None,He_max=None):
-    
     if not isinstance(mass,str):
         mass="{:.2f}".format(mass)
         mass_value=mass
@@ -63,10 +63,11 @@ def HR_plot_equal_mass(tree,mass,Z_min=None,Z_max=None,He_min=None,He_max=None):
             df=tree[metal][mass]
             plt.plot(df["LOG_TE_(K)"], df["LOG_L/Lo"], label=f"Composition ({metal})")
     
-    # Customize the plot
+    # Customize the plotS
     plt.xlabel("LOG_TE_(K)")
     plt.ylabel("LOG_L/Lo")
     plt.title(f"Different metalicity for mass={mass_value} M_sun")
+    plt.gca().invert_xaxis()
     plt.legend()
     plt.grid(True)
 
@@ -101,4 +102,4 @@ def HR_plot_RID(tree,equal="metallicity",mass_min=None,mass_max=None,Z_min=None,
         
         #make a plot for each mass in range.        
         for mass in mass_in_range:
-            HR_plot_equal_mass(tree,mass,Z_min=None,Z_max=None,He_min=None,He_max=None)
+            HR_plot_equal_mass(tree,mass,Z_min,Z_max,He_min,He_max)
