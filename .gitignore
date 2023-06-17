@@ -1,3 +1,5 @@
 FRANECpy.egg-info/
 test.py
 test_jupyter.ipynb
+build/
+dist/
