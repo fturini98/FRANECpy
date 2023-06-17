@@ -4,5 +4,5 @@ ipython
 matplotlib
 furo
 
-#for installing the FRANECpy library on Read the docs, whitout in the module where the FRANECpy dependeces are needed it dosen't work
+#for installing the FRANECpy library on Read the docs, without in the module where the FRANECpy dependencies are needed it doesn't work
 -e .
