@@ -1,221 +1,413 @@
-<!DOCTYPE html>
-<html class="writer-html5" lang="en" >
-<head>
-  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
+<!doctype html>
+<html class="no-js" lang="en">
+  <head><meta charset="utf-8"/>
+    <meta name="viewport" content="width=device-width,initial-scale=1"/>
+    <meta name="color-scheme" content="light dark"><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
+<link rel="index" title="Index" href="../genindex.html" /><link rel="search" title="Search" href="../search.html" /><link rel="prev" title="browse_and_choose_file_paths.py" href="browse_and_choose_file_paths_doc.html" />
 
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>build_tree.py &mdash; FRANECpy 0.0.1 documentation</title>
-      <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
-      <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
-  <!--[if lt IE 9]>
-    <script src="../_static/js/html5shiv.min.js"></script>
-  <![endif]-->
+    <!-- Generated with Sphinx 6.2.1 and Furo 2023.05.20 -->
+        <title>build_tree.py - FRANECpy 1.0.0 documentation</title>
+      <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/styles/furo.css?digest=e6660623a769aa55fea372102b9bf3151b292993" />
+    <link rel="stylesheet" type="text/css" href="../_static/styles/furo-extensions.css?digest=30d1aed668e5c3a91c3e3bf6a60b675221979f0e" />
+    
+    
+
+
+<style>
+  body {
+    --color-code-background: #f8f8f8;
+  --color-code-foreground: black;
   
-        <script src="../_static/jquery.js"></script>
-        <script src="../_static/_sphinx_javascript_frameworks_compat.js"></script>
-        <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
-        <script src="../_static/doctools.js"></script>
-        <script src="../_static/sphinx_highlight.js"></script>
-    <script src="../_static/js/theme.js"></script>
-    <link rel="index" title="Index" href="../genindex.html" />
-    <link rel="search" title="Search" href="../search.html" />
-    <link rel="prev" title="browse_and_choose_file_paths.py" href="browse_and_choose_file_paths_doc.html" /> 
-</head>
+  }
+  @media not print {
+    body[data-theme="dark"] {
+      --color-code-background: #202020;
+  --color-code-foreground: #d0d0d0;
+  
+    }
+    @media (prefers-color-scheme: dark) {
+      body:not([data-theme="light"]) {
+        --color-code-background: #202020;
+  --color-code-foreground: #d0d0d0;
+  
+      }
+    }
+  }
+</style></head>
+  <body>
+    
+    <script>
+      document.body.dataset.theme = localStorage.getItem("theme") || "auto";
+    </script>
+    
 
-<body class="wy-body-for-nav"> 
-  <div class="wy-grid-for-nav">
-    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
-      <div class="wy-side-scroll">
-        <div class="wy-side-nav-search" >
+<svg xmlns="http://www.w3.org/2000/svg" style="display: none;">
+  <symbol id="svg-toc" viewBox="0 0 24 24">
+    <title>Contents</title>
+    <svg stroke="currentColor" fill="currentColor" stroke-width="0" viewBox="0 0 1024 1024">
+      <path d="M408 442h480c4.4 0 8-3.6 8-8v-56c0-4.4-3.6-8-8-8H408c-4.4 0-8 3.6-8 8v56c0 4.4 3.6 8 8 8zm-8 204c0 4.4 3.6 8 8 8h480c4.4 0 8-3.6 8-8v-56c0-4.4-3.6-8-8-8H408c-4.4 0-8 3.6-8 8v56zm504-486H120c-4.4 0-8 3.6-8 8v56c0 4.4 3.6 8 8 8h784c4.4 0 8-3.6 8-8v-56c0-4.4-3.6-8-8-8zm0 632H120c-4.4 0-8 3.6-8 8v56c0 4.4 3.6 8 8 8h784c4.4 0 8-3.6 8-8v-56c0-4.4-3.6-8-8-8zM115.4 518.9L271.7 642c5.8 4.6 14.4.5 14.4-6.9V388.9c0-7.4-8.5-11.5-14.4-6.9L115.4 505.1a8.74 8.74 0 0 0 0 13.8z"/>
+    </svg>
+  </symbol>
+  <symbol id="svg-menu" viewBox="0 0 24 24">
+    <title>Menu</title>
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+      stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather-menu">
+      <line x1="3" y1="12" x2="21" y2="12"></line>
+      <line x1="3" y1="6" x2="21" y2="6"></line>
+      <line x1="3" y1="18" x2="21" y2="18"></line>
+    </svg>
+  </symbol>
+  <symbol id="svg-arrow-right" viewBox="0 0 24 24">
+    <title>Expand</title>
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+      stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather-chevron-right">
+      <polyline points="9 18 15 12 9 6"></polyline>
+    </svg>
+  </symbol>
+  <symbol id="svg-sun" viewBox="0 0 24 24">
+    <title>Light mode</title>
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+      stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" class="feather-sun">
+      <circle cx="12" cy="12" r="5"></circle>
+      <line x1="12" y1="1" x2="12" y2="3"></line>
+      <line x1="12" y1="21" x2="12" y2="23"></line>
+      <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
+      <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
+      <line x1="1" y1="12" x2="3" y2="12"></line>
+      <line x1="21" y1="12" x2="23" y2="12"></line>
+      <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
+      <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
+    </svg>
+  </symbol>
+  <symbol id="svg-moon" viewBox="0 0 24 24">
+    <title>Dark mode</title>
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+      stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" class="icon-tabler-moon">
+      <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+      <path d="M12 3c.132 0 .263 0 .393 0a7.5 7.5 0 0 0 7.92 12.446a9 9 0 1 1 -8.313 -12.454z" />
+    </svg>
+  </symbol>
+  <symbol id="svg-sun-half" viewBox="0 0 24 24">
+    <title>Auto light/dark mode</title>
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+      stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" class="icon-tabler-shadow">
+      <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
+      <circle cx="12" cy="12" r="9" />
+      <path d="M13 12h5" />
+      <path d="M13 15h4" />
+      <path d="M13 18h1" />
+      <path d="M13 9h4" />
+      <path d="M13 6h1" />
+    </svg>
+  </symbol>
+</svg>
 
-          
-          
-          <a href="../index.html" class="icon icon-home">
-            FRANECpy
-          </a>
-<div role="search">
-  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
-    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
-    <input type="hidden" name="check_keywords" value="yes" />
-    <input type="hidden" name="area" value="default" />
-  </form>
-</div>
-        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
-              <p class="caption" role="heading"><span class="caption-text">Contents:</span></p>
+<input type="checkbox" class="sidebar-toggle" name="__navigation" id="__navigation">
+<input type="checkbox" class="sidebar-toggle" name="__toc" id="__toc">
+<label class="overlay sidebar-overlay" for="__navigation">
+  <div class="visually-hidden">Hide navigation sidebar</div>
+</label>
+<label class="overlay toc-overlay" for="__toc">
+  <div class="visually-hidden">Hide table of contents sidebar</div>
+</label>
+
+
+
+<div class="page">
+  <header class="mobile-header">
+    <div class="header-left">
+      <label class="nav-overlay-icon" for="__navigation">
+        <div class="visually-hidden">Toggle site navigation sidebar</div>
+        <i class="icon"><svg><use href="#svg-menu"></use></svg></i>
+      </label>
+    </div>
+    <div class="header-center">
+      <a href="../index.html"><div class="brand">FRANECpy 1.0.0 documentation</div></a>
+    </div>
+    <div class="header-right">
+      <div class="theme-toggle-container theme-toggle-header">
+        <button class="theme-toggle">
+          <div class="visually-hidden">Toggle Light / Dark / Auto color theme</div>
+          <svg class="theme-icon-when-auto"><use href="#svg-sun-half"></use></svg>
+          <svg class="theme-icon-when-dark"><use href="#svg-moon"></use></svg>
+          <svg class="theme-icon-when-light"><use href="#svg-sun"></use></svg>
+        </button>
+      </div>
+      <label class="toc-overlay-icon toc-header-icon" for="__toc">
+        <div class="visually-hidden">Toggle table of contents sidebar</div>
+        <i class="icon"><svg><use href="#svg-toc"></use></svg></i>
+      </label>
+    </div>
+  </header>
+  <aside class="sidebar-drawer">
+    <div class="sidebar-container">
+      
+      <div class="sidebar-sticky"><a class="sidebar-brand" href="../index.html">
+  
+  
+  <span class="sidebar-brand-text">FRANECpy 1.0.0 documentation</span>
+  
+</a><form class="sidebar-search-container" method="get" action="../search.html" role="search">
+  <input class="sidebar-search" placeholder="Search" name="q" aria-label="Search">
+  <input type="hidden" name="check_keywords" value="yes">
+  <input type="hidden" name="area" value="default">
+</form>
+<div id="searchbox"></div><div class="sidebar-scroll"><div class="sidebar-tree">
+  <p class="caption" role="heading"><span class="caption-text">Contents:</span></p>
 <ul class="current">
-<li class="toctree-l1 current"><a class="reference internal" href="../Modules.html">Modules</a><ul class="current">
+<li class="toctree-l1 current has-children"><a class="reference internal" href="../Modules.html">Modules</a><input checked="" class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" role="switch" type="checkbox"/><label for="toctree-checkbox-1"><div class="visually-hidden">Toggle navigation of Modules</div><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul class="current">
 <li class="toctree-l2"><a class="reference internal" href="user_interface_doc.html">user_interface.py</a></li>
 <li class="toctree-l2"><a class="reference internal" href="functions_doc.html">functions.py</a></li>
 <li class="toctree-l2"><a class="reference internal" href="browse_and_choose_file_paths_doc.html">browse_and_choose_file_paths.py</a></li>
-<li class="toctree-l2 current"><a class="current reference internal" href="#">build_tree.py</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="#module-build_tree">Functions:</a><ul>
-<li class="toctree-l4"><a class="reference internal" href="#build_tree.build_tree_from_paths"><code class="docutils literal notranslate"><span class="pre">build_tree_from_paths()</span></code></a></li>
-<li class="toctree-l4"><a class="reference internal" href="#build_tree.extract_root_path_and_name"><code class="docutils literal notranslate"><span class="pre">extract_root_path_and_name()</span></code></a></li>
-<li class="toctree-l4"><a class="reference internal" href="#build_tree.generate_tree"><code class="docutils literal notranslate"><span class="pre">generate_tree()</span></code></a></li>
-<li class="toctree-l4"><a class="reference internal" href="#build_tree.load_tree_from_path"><code class="docutils literal notranslate"><span class="pre">load_tree_from_path()</span></code></a></li>
-<li class="toctree-l4"><a class="reference internal" href="#build_tree.load_trees"><code class="docutils literal notranslate"><span class="pre">load_trees()</span></code></a></li>
-<li class="toctree-l4"><a class="reference internal" href="#build_tree.manage_ISO_folders"><code class="docutils literal notranslate"><span class="pre">manage_ISO_folders()</span></code></a></li>
-<li class="toctree-l4"><a class="reference internal" href="#build_tree.manage_RID_folders"><code class="docutils literal notranslate"><span class="pre">manage_RID_folders()</span></code></a></li>
-<li class="toctree-l4"><a class="reference internal" href="#build_tree.manage_folders"><code class="docutils literal notranslate"><span class="pre">manage_folders()</span></code></a></li>
-<li class="toctree-l4"><a class="reference internal" href="#build_tree.save_tree_with_shell"><code class="docutils literal notranslate"><span class="pre">save_tree_with_shell()</span></code></a></li>
-</ul>
-</li>
-</ul>
-</li>
+<li class="toctree-l2 current current-page"><a class="current reference internal" href="#">build_tree.py</a></li>
 </ul>
 </li>
 </ul>
 
-        </div>
-      </div>
-    </nav>
-
-    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
-          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
-          <a href="../index.html">FRANECpy</a>
-      </nav>
-
-      <div class="wy-nav-content">
-        <div class="rst-content">
-          <div role="navigation" aria-label="Page navigation">
-  <ul class="wy-breadcrumbs">
-      <li><a href="../index.html" class="icon icon-home" aria-label="Home"></a></li>
-          <li class="breadcrumb-item"><a href="../Modules.html">Modules</a></li>
-      <li class="breadcrumb-item active">build_tree.py</li>
-      <li class="wy-breadcrumbs-aside">
-            <a href="../_sources/Modules/build_tree_doc.rst.txt" rel="nofollow"> View page source</a>
-      </li>
-  </ul>
-  <hr/>
 </div>
-          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
-           <div itemprop="articleBody">
-             
-  <section id="build-tree-py">
-<h1>build_tree.py<a class="headerlink" href="#build-tree-py" title="Permalink to this heading"></a></h1>
-<p>This module from the file paths manages the folders and builds the data tree.</p>
-<dl>
-<dt><strong>Attention:</strong></dt><dd><p>The biggest folder that you can  choose are <em>tools-driver-out</em> and <em>tools-isocrone-out</em>.</p>
-<p>They <strong>must named like this</strong> else they are excluded form the tree.
-If you want to change these conditions you must change the function <em>manage_folders</em>.</p>
+</div>
+
+      </div>
+      
+    </div>
+  </aside>
+  <div class="main">
+    <div class="content">
+      <div class="article-container">
+        <a href="#" class="back-to-top muted-link">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+            <path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8v12z"></path>
+          </svg>
+          <span>Back to top</span>
+        </a>
+        <div class="content-icon-container">
+          
+<div class="theme-toggle-container theme-toggle-content">
+            <button class="theme-toggle">
+              <div class="visually-hidden">Toggle Light / Dark / Auto color theme</div>
+              <svg class="theme-icon-when-auto"><use href="#svg-sun-half"></use></svg>
+              <svg class="theme-icon-when-dark"><use href="#svg-moon"></use></svg>
+              <svg class="theme-icon-when-light"><use href="#svg-sun"></use></svg>
+            </button>
+          </div>
+          <label class="toc-overlay-icon toc-content-icon" for="__toc">
+            <div class="visually-hidden">Toggle table of contents sidebar</div>
+            <i class="icon"><svg><use href="#svg-toc"></use></svg></i>
+          </label>
+        </div>
+        <article role="main">
+          <section id="build-tree-py">
+<h1>build_tree.py<a class="headerlink" href="#build-tree-py" title="Permalink to this heading">#</a></h1>
+<section id="description">
+<h2>Description<a class="headerlink" href="#description" title="Permalink to this heading">#</a></h2>
+<p>This module manages the folders and starting from the file paths builds the data tree.</p>
+<dl class="simple">
+<dt><strong>Attention:</strong></dt><dd><ul class="simple">
+<li><p>The biggest folder that you can choose are <em>tools-driver-out</em> and <em>tools-isocrone-out</em>.</p></li>
+<li><p>They <strong>must be named like this</strong>, or else they are excluded from the tree.</p></li>
+</ul>
 </dd>
 </dl>
+<section id="useful-functions">
+<h3>Useful functions<a class="headerlink" href="#useful-functions" title="Permalink to this heading">#</a></h3>
+<p>The most useful function of this module are:</p>
+<section id="build-tree-from-paths">
+<h4>build_tree_from_paths<a class="headerlink" href="#build-tree-from-paths" title="Permalink to this heading">#</a></h4>
+<p>This function builds a hierarchical tree structure from a list of file paths.</p>
+</section>
+<section id="save-tree-whit-shell">
+<h4>save_tree_whit_shell<a class="headerlink" href="#save-tree-whit-shell" title="Permalink to this heading">#</a></h4>
+<p>This function permits saving the just created file in the <em>DataTrees</em> folder, passing as arguments the tree and the main data folder path.</p>
+<p>If the <em>DataTrees</em> folder doesn’t exist, it is automatically created when a tree is saved for the first time.</p>
+</section>
+<section id="load-trees">
+<h4>load_trees<a class="headerlink" href="#load-trees" title="Permalink to this heading">#</a></h4>
+<p>This function permits to load multiple data trees that are already saved inside the <em>DataTrees</em> folder.</p>
+</section>
+</section>
+</section>
 <section id="module-build_tree">
-<span id="functions"></span><h2>Functions:<a class="headerlink" href="#module-build_tree" title="Permalink to this heading"></a></h2>
+<span id="functions"></span><h2>Functions<a class="headerlink" href="#module-build_tree" title="Permalink to this heading">#</a></h2>
 <dl class="py function">
 <dt class="sig sig-object py" id="build_tree.build_tree_from_paths">
-<span class="sig-prename descclassname"><span class="pre">build_tree.</span></span><span class="sig-name descname"><span class="pre">build_tree_from_paths</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">file_paths</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">common_path</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#build_tree.build_tree_from_paths" title="Permalink to this definition"></a></dt>
+<span class="sig-prename descclassname"><span class="pre">build_tree.</span></span><span class="sig-name descname"><span class="pre">build_tree_from_paths</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">file_paths</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">common_path</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#build_tree.build_tree_from_paths" title="Permalink to this definition">#</a></dt>
 <dd><p>Builds a hierarchical tree structure from a list of file paths.</p>
 <p>The function analyzes the file paths, extracts relevant information, and organizes it into a tree-like structure.</p>
-<p>The tree structure is organized for having at the same level the branch of “tools-driver-out” and “tools-isocrone-out”, inside thath
-there are three sub branchs, RAW, RID and ISO (thath must be implemented).
-Inside of this three branchs, there are the branch of the metallictys and iside there, there are the pandas dataframe divide for each mass.</p>
+<p>The tree structure is organized for having at the same level the branch of “tools-driver-out” and “tools-isocrone-out”, inside that
+there are sub-branches named RAW, RID and ISO.
+Inside these three branches, there are the branches of the metallicities and inside there are the pandas data frames divided by mass.</p>
 <dl class="simple">
-<dt>Args:</dt><dd><p>file_paths (list): A list of file paths to be processed.
-common_path (str): The common path shared by all the file paths.</p>
+<dt>Args:</dt><dd><dl class="simple">
+<dt>file_paths (list):</dt><dd><p>A list of file paths to be processed.</p>
 </dd>
-<dt>Returns:</dt><dd><p>dict: A hierarchical tree structure representing the organization of the file paths.</p>
+<dt>common_path (str):</dt><dd><p>The common path is shared by all the file paths.</p>
+</dd>
+</dl>
+</dd>
+<dt>Returns:</dt><dd><dl class="simple">
+<dt>tree (dict):</dt><dd><p>A hierarchical tree structure whit the data.</p>
+</dd>
+</dl>
 </dd>
 </dl>
 </dd></dl>
 
 <dl class="py function">
 <dt class="sig sig-object py" id="build_tree.extract_root_path_and_name">
-<span class="sig-prename descclassname"><span class="pre">build_tree.</span></span><span class="sig-name descname"><span class="pre">extract_root_path_and_name</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">file_paths</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">folder_paths</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#build_tree.extract_root_path_and_name" title="Permalink to this definition"></a></dt>
+<span class="sig-prename descclassname"><span class="pre">build_tree.</span></span><span class="sig-name descname"><span class="pre">extract_root_path_and_name</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">file_paths</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">folder_paths</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#build_tree.extract_root_path_and_name" title="Permalink to this definition">#</a></dt>
 <dd><p>Extracts the common root path from the given file and folder paths.</p>
 <dl class="simple">
-<dt>Args:</dt><dd><p>file_paths (list): List of file paths.
-folder_paths (list): List of folder paths.</p>
+<dt>Args:</dt><dd><dl class="simple">
+<dt>file_paths (list):</dt><dd><p>List of file paths.</p>
 </dd>
-<dt>Returns:</dt><dd><p>string: A string containing the common root path.</p>
+<dt>folder_paths (list):</dt><dd><p>List of folder paths.</p>
+</dd>
+</dl>
+</dd>
+<dt>Returns:</dt><dd><dl class="simple">
+<dt>common_path (string):</dt><dd><p>A string containing the common root path.</p>
+</dd>
+</dl>
 </dd>
 </dl>
 </dd></dl>
 
 <dl class="py function">
 <dt class="sig sig-object py" id="build_tree.generate_tree">
-<span class="sig-prename descclassname"><span class="pre">build_tree.</span></span><span class="sig-name descname"><span class="pre">generate_tree</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">file_paths</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">folder_paths</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#build_tree.generate_tree" title="Permalink to this definition"></a></dt>
+<span class="sig-prename descclassname"><span class="pre">build_tree.</span></span><span class="sig-name descname"><span class="pre">generate_tree</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">file_paths</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">folder_paths</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#build_tree.generate_tree" title="Permalink to this definition">#</a></dt>
 <dd><p>Generates a hierarchical tree structure based on file paths and folder paths.</p>
 <p>The function extracts the common path, manages the folder paths, and builds a tree-like structure based on the file paths.
-For doing thath it use the build_tree_from_paths function.</p>
+For doing that it uses the build_tree_from_paths function.</p>
 <dl class="simple">
-<dt>Args:</dt><dd><p>file_paths (list): A list of file paths to be processed.
-folder_paths (list): A list of folder paths to be processed.</p>
+<dt>Args:</dt><dd><dl class="simple">
+<dt>file_paths (list):</dt><dd><p>A list of file paths to be processed.</p>
 </dd>
-<dt>Returns:</dt><dd><p>dict: A hierarchical tree structure representing the organization of the file paths.</p>
+<dt>folder_paths (list):</dt><dd><p>A list of folder paths to be processed.</p>
+</dd>
+</dl>
+</dd>
+<dt>Returns:</dt><dd><dl class="simple">
+<dt>tree (dict):</dt><dd><p>A hierarchical tree structure whit the data.</p>
+</dd>
+</dl>
 </dd>
 </dl>
 </dd></dl>
 
 <dl class="py function">
 <dt class="sig sig-object py" id="build_tree.load_tree_from_path">
-<span class="sig-prename descclassname"><span class="pre">build_tree.</span></span><span class="sig-name descname"><span class="pre">load_tree_from_path</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">file_path</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#build_tree.load_tree_from_path" title="Permalink to this definition"></a></dt>
+<span class="sig-prename descclassname"><span class="pre">build_tree.</span></span><span class="sig-name descname"><span class="pre">load_tree_from_path</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">file_path</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#build_tree.load_tree_from_path" title="Permalink to this definition">#</a></dt>
 <dd><p>Load a serialized tree from a file.</p>
 <p>This function loads a serialized tree from a specified file path. The tree is deserialized, including any serialized DataFrames.</p>
 <dl class="simple">
-<dt>Args:</dt><dd><p>file_path (str): The path of the file containing the serialized tree.</p>
+<dt>Args:</dt><dd><dl class="simple">
+<dt>file_path (str):</dt><dd><p>The path of the file containing the serialized tree.</p>
 </dd>
-<dt>Returns:</dt><dd><p>tuple: A tuple containing the loaded tree and the file name.</p>
+</dl>
+</dd>
+<dt>Returns:</dt><dd><dl class="simple">
+<dt>tree (dict), file_name (str):</dt><dd><p>A tuple containing the loaded tree and the file name.</p>
+</dd>
+</dl>
 </dd>
 </dl>
 </dd></dl>
 
 <dl class="py function">
 <dt class="sig sig-object py" id="build_tree.load_trees">
-<span class="sig-prename descclassname"><span class="pre">build_tree.</span></span><span class="sig-name descname"><span class="pre">load_trees</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">tree_paths</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#build_tree.load_trees" title="Permalink to this definition"></a></dt>
+<span class="sig-prename descclassname"><span class="pre">build_tree.</span></span><span class="sig-name descname"><span class="pre">load_trees</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">tree_paths</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#build_tree.load_trees" title="Permalink to this definition">#</a></dt>
 <dd><p>Load multiple trees from the specified file paths.</p>
 <p>This function loads multiple trees from the given file paths and stores them in a dictionary, where the keys are the tree names (derived from the file names) and the values are the loaded trees. It also includes a special “paths” branch in the dictionary, which contains all the tree paths.</p>
 <dl class="simple">
-<dt>Args:</dt><dd><p>tree_paths (list): A list of file paths to the tree files.</p>
+<dt>Args:</dt><dd><dl class="simple">
+<dt>tree_paths (list):</dt><dd><p>A list of file paths to the tree files.</p>
 </dd>
-<dt>Returns:</dt><dd><p>dict: A dictionary containing the loaded trees and the tree paths.</p>
+</dl>
+</dd>
+<dt>Returns:</dt><dd><dl class="simple">
+<dt>trees (dict):</dt><dd><p>A dictionary containing the loaded trees and the tree paths.</p>
+</dd>
+</dl>
 </dd>
 </dl>
 </dd></dl>
 
 <dl class="py function">
 <dt class="sig sig-object py" id="build_tree.manage_ISO_folders">
-<span class="sig-prename descclassname"><span class="pre">build_tree.</span></span><span class="sig-name descname"><span class="pre">manage_ISO_folders</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">folder_path</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">file_paths</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#build_tree.manage_ISO_folders" title="Permalink to this definition"></a></dt>
-<dd></dd></dl>
+<span class="sig-prename descclassname"><span class="pre">build_tree.</span></span><span class="sig-name descname"><span class="pre">manage_ISO_folders</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">folder_path</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">file_paths</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#build_tree.manage_ISO_folders" title="Permalink to this definition">#</a></dt>
+<dd><p>Retrieve AGE files from the ISO folder path and append their paths to the <em>file_paths</em> list.</p>
+<dl class="simple">
+<dt>Args:</dt><dd><dl class="simple">
+<dt>folder_path (str):</dt><dd><p>The path to the ISO folder containing the files.</p>
+</dd>
+<dt>file_paths (list):</dt><dd><p>The list to which the file paths will be appended.</p>
+</dd>
+</dl>
+</dd>
+<dt>Returns:</dt><dd><dl class="simple">
+<dt>file_paths (list):</dt><dd><p>The updated file_paths list contains the paths of ISO files.</p>
+</dd>
+</dl>
+</dd>
+</dl>
+</dd></dl>
 
 <dl class="py function">
 <dt class="sig sig-object py" id="build_tree.manage_RID_folders">
-<span class="sig-prename descclassname"><span class="pre">build_tree.</span></span><span class="sig-name descname"><span class="pre">manage_RID_folders</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">folder_path</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">file_paths</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#build_tree.manage_RID_folders" title="Permalink to this definition"></a></dt>
+<span class="sig-prename descclassname"><span class="pre">build_tree.</span></span><span class="sig-name descname"><span class="pre">manage_RID_folders</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">folder_path</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">file_paths</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#build_tree.manage_RID_folders" title="Permalink to this definition">#</a></dt>
 <dd><p>Retrieves the file paths of DAT files within a specified folder and its subfolders.
-And append it to the list of files path.</p>
+Append it to the list of files path.</p>
 <dl class="simple">
-<dt>Args:</dt><dd><p>folder_path (str): The path to the folder to search for DAT files.
-file_paths (list): A list to store the file paths of the DAT files.</p>
+<dt>Args:</dt><dd><dl class="simple">
+<dt>folder_path (str):</dt><dd><p>The path to the folder to search for RID files.</p>
 </dd>
-<dt>Returns:</dt><dd><p>list: The updating list containing also the file paths of the DAT files found within the folder and its subfolders.</p>
+<dt>file_paths (list):</dt><dd><p>A list to store the file paths.</p>
+</dd>
+</dl>
+</dd>
+<dt>Returns:</dt><dd><dl class="simple">
+<dt>file_paths(list):</dt><dd><p>The updating list containing also the file paths of the RID files found within the folder and its subfolders.</p>
+</dd>
+</dl>
 </dd>
 </dl>
 </dd></dl>
 
 <dl class="py function">
 <dt class="sig sig-object py" id="build_tree.manage_folders">
-<span class="sig-prename descclassname"><span class="pre">build_tree.</span></span><span class="sig-name descname"><span class="pre">manage_folders</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">folder_paths</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">file_paths</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#build_tree.manage_folders" title="Permalink to this definition"></a></dt>
+<span class="sig-prename descclassname"><span class="pre">build_tree.</span></span><span class="sig-name descname"><span class="pre">manage_folders</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">folder_paths</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">file_paths</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#build_tree.manage_folders" title="Permalink to this definition">#</a></dt>
 <dd><p>Manages the folder paths and generates a list of file paths of interest.</p>
-<p>The function processes the given folder paths and extracts relevant file paths based on specific conditions of formattation of the data file provided by FRANEC program.</p>
+<p>The function processes the given folder paths and extracts relevant file paths based on specific conditions of formation of the data file provided by FRANEC program.</p>
 <dl class="simple">
-<dt>Args:</dt><dd><p>folder_paths (list): A list of folder paths to be processed.
-file_paths (list): A list to store the file paths of interest.</p>
+<dt>Args:</dt><dd><dl class="simple">
+<dt>folder_paths (list):</dt><dd><p>A list of folder paths to be processed.</p>
 </dd>
-<dt>Returns:</dt><dd><p>list: A list containing the file paths of interest.</p>
+<dt>file_paths (list):</dt><dd><p>A list to store the file paths of interest.</p>
+</dd>
+</dl>
+</dd>
+<dt>Returns:</dt><dd><dl class="simple">
+<dt>file_paths (list):</dt><dd><p>A list containing the file paths of interest.</p>
+</dd>
+</dl>
 </dd>
 </dl>
 </dd></dl>
 
 <dl class="py function">
 <dt class="sig sig-object py" id="build_tree.save_tree_with_shell">
-<span class="sig-prename descclassname"><span class="pre">build_tree.</span></span><span class="sig-name descname"><span class="pre">save_tree_with_shell</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">tree</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">folder_path</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#build_tree.save_tree_with_shell" title="Permalink to this definition"></a></dt>
+<span class="sig-prename descclassname"><span class="pre">build_tree.</span></span><span class="sig-name descname"><span class="pre">save_tree_with_shell</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">tree</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">folder_path</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#build_tree.save_tree_with_shell" title="Permalink to this definition">#</a></dt>
 <dd><p>Prompt the user to save a tree and serialize it to a file.</p>
-<p>This function prompts the user to save a tree by providing a file name and saves the serialized tree to a specified folder path. The tree is serialized to JSON format before saving.</p>
+<p>This function prompts the user to save a tree by providing a file name and saves the serialized tree to a specified folder path. The tree is serialized to JSON format before saving.
+The folder path of input is the main data folder path, the function manages the creation of the <em>DataTrees</em> subfolder if it is necessary.</p>
 <dl class="simple">
-<dt>Args:</dt><dd><p>tree: The tree object to save.
-folder_path (str): The folder path where the tree will be saved.</p>
+<dt>Args:</dt><dd><dl class="simple">
+<dt>tree (dict):</dt><dd><p>The tree object to save.</p>
 </dd>
-<dt>Returns:</dt><dd><p>None</p>
+<dt>folder_path (str):</dt><dd><p>The folder path where the tree will be saved.</p>
+</dd>
+</dl>
 </dd>
 </dl>
 </dd></dl>
@@ -223,34 +415,89 @@ folder_path (str): The folder path where the tree will be saved.</p>
 </section>
 </section>
 
-
-           </div>
+        </article>
+      </div>
+      <footer>
+        
+        <div class="related-pages">
+          
+          <a class="prev-page" href="browse_and_choose_file_paths_doc.html">
+              <svg class="furo-related-icon"><use href="#svg-arrow-right"></use></svg>
+              <div class="page-info">
+                <div class="context">
+                  <span>Previous</span>
+                </div>
+                
+                <div class="title">browse_and_choose_file_paths.py</div>
+                
+              </div>
+            </a>
+        </div>
+        <div class="bottom-of-page">
+          <div class="left-details">
+            <div class="copyright">
+                Copyright &#169; 2023, Francesco Turini
+            </div>
+            Made with <a href="https://www.sphinx-doc.org/">Sphinx</a> and <a class="muted-link" href="https://pradyunsg.me">@pradyunsg</a>'s
+            
+            <a href="https://github.com/pradyunsg/furo">Furo</a>
+            
           </div>
-          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
-        <a href="browse_and_choose_file_paths_doc.html" class="btn btn-neutral float-left" title="browse_and_choose_file_paths.py" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+          <div class="right-details">
+            
+          </div>
+        </div>
+        
+      </footer>
     </div>
+    <aside class="toc-drawer">
+      
+      
+      <div class="toc-sticky toc-scroll">
+        <div class="toc-title-container">
+          <span class="toc-title">
+            On this page
+          </span>
+        </div>
+        <div class="toc-tree-container">
+          <div class="toc-tree">
+            <ul>
+<li><a class="reference internal" href="#">build_tree.py</a><ul>
+<li><a class="reference internal" href="#description">Description</a><ul>
+<li><a class="reference internal" href="#useful-functions">Useful functions</a><ul>
+<li><a class="reference internal" href="#build-tree-from-paths">build_tree_from_paths</a></li>
+<li><a class="reference internal" href="#save-tree-whit-shell">save_tree_whit_shell</a></li>
+<li><a class="reference internal" href="#load-trees">load_trees</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><a class="reference internal" href="#module-build_tree">Functions</a><ul>
+<li><a class="reference internal" href="#build_tree.build_tree_from_paths"><code class="docutils literal notranslate"><span class="pre">build_tree_from_paths()</span></code></a></li>
+<li><a class="reference internal" href="#build_tree.extract_root_path_and_name"><code class="docutils literal notranslate"><span class="pre">extract_root_path_and_name()</span></code></a></li>
+<li><a class="reference internal" href="#build_tree.generate_tree"><code class="docutils literal notranslate"><span class="pre">generate_tree()</span></code></a></li>
+<li><a class="reference internal" href="#build_tree.load_tree_from_path"><code class="docutils literal notranslate"><span class="pre">load_tree_from_path()</span></code></a></li>
+<li><a class="reference internal" href="#build_tree.load_trees"><code class="docutils literal notranslate"><span class="pre">load_trees()</span></code></a></li>
+<li><a class="reference internal" href="#build_tree.manage_ISO_folders"><code class="docutils literal notranslate"><span class="pre">manage_ISO_folders()</span></code></a></li>
+<li><a class="reference internal" href="#build_tree.manage_RID_folders"><code class="docutils literal notranslate"><span class="pre">manage_RID_folders()</span></code></a></li>
+<li><a class="reference internal" href="#build_tree.manage_folders"><code class="docutils literal notranslate"><span class="pre">manage_folders()</span></code></a></li>
+<li><a class="reference internal" href="#build_tree.save_tree_with_shell"><code class="docutils literal notranslate"><span class="pre">save_tree_with_shell()</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
 
-  <hr/>
-
-  <div role="contentinfo">
-    <p>&#169; Copyright 2023, Francesco Turini.</p>
-  </div>
-
-  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
-    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
-    provided by <a href="https://readthedocs.org">Read the Docs</a>.
-   
-
-</footer>
+          </div>
         </div>
       </div>
-    </section>
+      
+      
+    </aside>
   </div>
-  <script>
-      jQuery(function () {
-          SphinxRtdTheme.Navigation.enable(true);
-      });
-  </script> 
-
-</body>
+</div><script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
+    <script src="../_static/doctools.js"></script>
+    <script src="../_static/sphinx_highlight.js"></script>
+    <script src="../_static/scripts/furo.js"></script>
+    </body>
 </html>

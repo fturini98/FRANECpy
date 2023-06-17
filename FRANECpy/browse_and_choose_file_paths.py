@@ -11,8 +11,11 @@ def get_main_data_folder_path(data_folder_path="C:/Users/fturi/Desktop/Dati"):
     If the folder path is invalid, the user is prompted to input a valid path.
 
     Returns:
-    - The user-provided folder path if it's valid.
-    - None if the program is stopped or the folder path is invalid.
+        folder_path(str):
+            The user-provided folder path if it's valid.
+            
+        None:
+            if the program is stopped or the folder path is invalid.
     """
     while True:
         # Prompt user for folder path
@@ -38,15 +41,21 @@ def get_main_data_folder_path(data_folder_path="C:/Users/fturi/Desktop/Dati"):
             print("\033[33mInvalid folder path! Please try again.\033[0m")
 
 def browse_and_select_files(folder_path,root=None):
-    """Browse and select files and folders from a specified folder data path.
+    """ Browse and select files and folders from a specified folder data path.
 
-    This function provides a file browsing interface that allows the user to browse and select files and folders from a specified folder data path. The selected files and folders are stored in separate lists and returned at the end of the browsing session.
+    This function provides a file-browsing interface that allows the user to browse and select files and folders from a specified folder data path. The selected files and folders are stored in separate lists and returned at the end of the browsing session.
 
     Args:
-        folder_path (str): The path of the folder to browse.
+        folder_path (str): 
+            The path of the folder to browse.
+        
+        root (tk.TK()):
+            The Tkinter root window (optional).
 
     Returns:
-        tuple: A tuple containing two lists. The first list contains the selected file paths, and the second list contains the selected folder paths.
+        selected_files (list), selected_folders (list): 
+            A tuple containing two lists. 
+            The first list contains the selected file paths, and the second list contains the selected folder paths.
     """
 
     selected_files = []  # Array to store selected file paths
@@ -271,10 +280,12 @@ def choose_file_paths(main_data_folder_path,root=None):
     Allows the user to select files and folders through browsing, removes nested paths, and returns the cleared file paths and parent folder paths.
     
     Args:
-        main_data_folder_path (str): The path of the main data folder to browse.
+        main_data_folder_path (str): 
+            The path of the main data folder to browse.
     
     Returns:
-        tuple: A tuple containing two lists - cleared_file_paths (list[str]): A list of cleared file paths that are not nested within any of the parent folder paths, and parent_folder_paths (list[str]): A list of parent folder paths without any nested folder paths.
+        cleared_file_paths (list), parent_folder_paths (list): 
+            A tuple containing two lists - cleared_file_paths (list[str]): A list of cleared file paths that are not nested within any of the parent folder paths, and parent_folder_paths (list[str]): A list of parent folder paths without any nested folder paths.
     """
     
     #choose the files via browsing
@@ -386,14 +397,18 @@ def browse_and_select_trees(standard_data_folder="C:/Users/fturi/Desktop/Dati",r
     """
     Browse and select trees from a specified folder path.
 
-    This function provides a tree browsing interface that allows the user to browse and select trees from a specified folder path. The selected trees are stored in a list and returned at the end of the browsing session.
+    This function provides a tree-browsing interface that allows the user to browse and select trees from a specified folder path. The selected trees are stored in a list and returned at the end of the browsing session.
 
     Args:
-        standard_data_folder (str): The standard folder path where the tree data is located.
-        root: The Tkinter root window (optional).
+        standard_data_folder (str): 
+            The standard folder path where the data tree is located.
+        
+        root(tk.Tk()): 
+            The Tkinter root window (optional).
 
     Returns:
-        list: A list containing the selected tree paths.
+        selected_trees (list): 
+            A list containing the selected tree paths.
     """
     tree_folder=standard_data_folder+"/DataTrees"
 

@@ -2,10 +2,13 @@ from setuptools import setup, find_packages
 
 setup(
     name='FRANECpy',
-    __version__ = 'dev',
+    readme = "README.md",
+    version = '1.0.0',
     author='Francesco Turini',
     author_email='fturini.turini7@gmail.com',
-    description='A simple library for help in the data analysis from FRANEC simulation.',
+    description='A simple library for help in the data analysis for FRANEC simulation.',
+    url='https://github.com/fturini98/FRANECpy',
+    license='GNU General Public License (GPL)',
     packages=find_packages(),
     install_requires=[
         'pandas',
@@ -14,7 +17,8 @@ setup(
     ],
     classifiers=[
         'Programming Language :: Python :: 3',
-        'License :: OSI Approved :: MIT License',
+        'License :: OSI Approved ::GNU General Public License (GPL)',
         'Operating System :: OS Independent',
+        'Operating System :: Microsoft :: Windows',
     ],
 )

@@ -1,16 +1,37 @@
 build_tree.py
 =============
 
-This module from the file paths manages the folders and builds the data tree.
+Description
+-----------
+
+This module manages the folders and starting from the file paths builds the data tree.
 
 **Attention:** 
- The biggest folder that you can  choose are *tools-driver-out* and *tools-isocrone-out*.
+   - The biggest folder that you can choose are *tools-driver-out* and *tools-isocrone-out*.
 
- They **must named like this** else they are excluded form the tree.
- If you want to change these conditions you must change the function *manage_folders*.
+   - They **must be named like this**, or else they are excluded from the tree.
 
-Functions:
-----------
+Useful functions
+~~~~~~~~~~~~~~~~
+
+The most useful function of this module are:
+
+build_tree_from_paths
++++++++++++++++++++++
+This function builds a hierarchical tree structure from a list of file paths.
+
+save_tree_whit_shell
+++++++++++++++++++++
+This function permits saving the just created file in the *DataTrees* folder, passing as arguments the tree and the main data folder path.
+
+If the *DataTrees* folder doesn't exist, it is automatically created when a tree is saved for the first time.
+
+load_trees
+++++++++++
+This function permits to load multiple data trees that are already saved inside the *DataTrees* folder.
+
+Functions
+---------
 
 .. automodule:: build_tree
    :members:

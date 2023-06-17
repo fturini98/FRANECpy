@@ -15,7 +15,8 @@ def choose_open_or_create_tree():
     This function continuously prompts the user to choose between loading existing trees or creating a new one until a valid choice is made.
 
     Returns:
-        str: The user's choice, either "create" or "load".
+        choice (str): 
+            One user's choice returns "create" or "load".
     """
     while True:
         user_input = input("\033[34mDo you want to load trees or create a new one? (create=c / load=l):\033[0m ")
@@ -38,10 +39,12 @@ def browse_load_trees(data_folder_paths):
     This function prompts the user to browse and select tree files from the specified data folder paths. It then loads the selected tree files using the `load_trees` function and returns the loaded trees.
 
     Args:
-        data_folder_paths (list): A list of data folder paths to browse for tree files.
+        data_folder_paths (list): 
+            A list of data folder paths to browse for tree files.
 
     Returns:
-        dict: A dictionary containing the loaded trees and the tree paths.
+        tree (dict): 
+            A dictionary containing the loaded trees and the tree paths.
     """
     tree_paths = jupyter_choose_tree_paths(data_folder_paths)
     trees = load_trees(tree_paths)
@@ -56,11 +59,13 @@ def tree_call(standard_data_folder="C:/Users/fturi/Desktop/Dati"):
     It interacts with the user to select files and folders, generate trees, and save or load trees accordingly.
 
     Args:
-        standard_data_folder (str): The standard data folder path. The default is "C:/Users/fturi/Desktop/Dati".
+        standard_data_folder (str): 
+            The standard data folder path. The default is "C:/Users/fturi/Desktop/Dati".
 
     Returns:
-        dict or Tree: If a new tree is created, it returns the generated tree object.
-        If existing trees are loaded, it returns a dictionary containing the loaded trees.
+        Tree (dict): 
+            If a new tree is created, it returns the generated tree object.
+            If existing trees are loaded, it returns a dictionary containing the loaded trees.
     """
     # Get the main data folder path
     data_folder_path = get_main_data_folder_path(standard_data_folder)
@@ -107,11 +112,12 @@ def simple_browse(tree,root=None):
     """ Displays a browseable tree structure using Tkinter.
     
     Args:
+        tree (dict): 
+            The nested dictionary tree to display.
         
-        tree (dict): The nested dictionary tree to display.
-        
-        root (tkinter.Tk, optional): The root Tkinter window. If None, a new Tkinter window is created.
-        Defaults to None.
+        root (tkinter.Tk, optional): 
+            The root Tkinter window. If None, a new Tkinter window is created.
+            Defaults to None.
     """
         
     if root==None:
@@ -152,11 +158,12 @@ def print_tree(tree, indent=''):
     Recursively prints the keys of a nested dictionary tree.
     
     Args:
-    
-        tree (dict): The nested dictionary tree to print.
+        tree (dict):
+            The nested dictionary tree to print.
         
-        indent (str): Optional parameter to specify indentation for each level.
-        Defaults to an empty string.
+        indent (str):
+            Optional parameter to specify indentation for each level.
+            Defaults to an empty string.
     """
     for key, value in tree.items():
         if isinstance(value, dict):
@@ -174,10 +181,12 @@ def jupyter_choose_file_paths(data_folder_path):
     Choose file paths and folder paths using a file dialog within a Jupyter Notebook.
 
     Args:
-        data_folder_path (str): The path to the data folder.
+        data_folder_path (str): 
+            The path to the data folder.
 
     Returns:
-        tuple: A tuple containing the selected file paths and folder paths.
+        file_paths (list), folder_paths (list): 
+            A tuple containing the selected file paths and folder paths.
     """
     file_paths = []
     folder_paths = []
@@ -221,10 +230,12 @@ def jupyter_choose_tree_paths(data_folder_path):
     Choose tree paths using a file dialog within a Jupyter Notebook.
 
     Args:
-        data_folder_path (str): The path to the data folder.
+        data_folder_path (str): 
+            The path to the data folder.
 
     Returns:
-        list: A list of selected tree paths.
+        tree_paths (list): 
+            A list of selected tree paths.
     """
     tree_paths = []
     result_holder = {'tree_paths': tree_paths}
@@ -270,10 +281,9 @@ def jupyter_simple_browse(tree):
     to stop the thread when needed.
 
     Args:
-        tree: The tree parameter to pass to the 'simple_browse' function.
+        tree (dict): 
+            The tree parameter to pass to the 'simple_browse' function.
 
-    Returns:
-        None
     """
 
     # Create a stop event object

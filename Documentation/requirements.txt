@@ -3,5 +3,5 @@ pandas
 ipython
 matplotlib
 
-#for install the FRANECpy library on Read the docs, whitout in the module where the FRANECpy dependeces are needed it dosen't work
+#for installing the FRANECpy library on Read the docs, whitout in the module where the FRANECpy dependeces are needed it dosen't work
 -e .

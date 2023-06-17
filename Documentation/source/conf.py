@@ -15,7 +15,7 @@ sys.path.insert(0, os.path.abspath('../../FRANECpy'))
 project = 'FRANECpy'
 copyright = '2023, Francesco Turini'
 author = 'Francesco Turini'
-release = '0.0.1'
+release = '1.0.0'
 
 # -- General configuration ---------------------------------------------------
 
@@ -42,9 +42,9 @@ exclude_patterns = ['_build', 'Thumbs.db', '.DS_Store']
 # The theme to use for HTML and HTML Help pages.  See the documentation for
 # a list of builtin themes.
 #
-import sphinx_rtd_theme
+import furo
 
-html_theme = 'sphinx_rtd_theme'
+html_theme = 'furo'
 
 # Add any paths that contain custom static files (such as style sheets) here,
 # relative to this directory. They are copied after the builtin static files,

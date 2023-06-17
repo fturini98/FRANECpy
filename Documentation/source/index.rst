@@ -6,24 +6,34 @@
 Welcome to FRANECpy's documentation!
 ====================================
 This library is created to analyze the FRANEC program output.
-The main goal of this library is creating an interactive whindow tho choose and import, in a tree format (managed via dictionary and dataframes), the data taken from the files.dat, provided by the FRANEC simulations, to analyze it.
-These tree colud be saved and reloaded if you want to make the data analysis faster.
+The main goal of this library is to create an interactive window to choose and import, in a tree format (managed via dictionary and data frames), the data taken from the files.dat, provided by the FRANEC simulations, to analyze it.
+These trees could be saved and reloaded if you want to make the data analysis faster.
 
-We tried to port the functions into the jupyter environment, even though the kernel crashes from time to time, the functions actually work.
+The functions are also ported into the jupyter environment.
 
-Most uselful functions:
+Most useful functions:
 ------------------------
 
-:usere_interface module:
-
-- *tree_call()*:   
-   When you call this function it creates an interactive window where you choose to import or create data trees. The function returns a data tree.
-
-- *load_trees(list(files paths))*: 
-   When you call this function it loads the trees that you have alredy saved from their files phats. It return a data tree whit all the trees that you have chosen.
+usere_interface module
+~~~~~~~~~~~~~~~~~~~~~~~
+   - *tree_call()*:   
+         When you call this function it creates an interactive window where you choose to import or create data trees. The function returns a data tree.
    
-- *jupyter_simple_browse(tree)*: 
-   When you call the function it opens a window to browse the tree. It works also in jupyter enviroment.
+   - *jupyter_simple_browse(tree(dict))*: 
+         When you call the function it opens a window to browse the tree. It works also in jupyter environment.
+
+build_tree module
+~~~~~~~~~~~~~~~~~
+   - *load_trees(list(files paths))*: 
+         When you call this function it loads the trees that you have already saved from their files phats. It returns a data tree whit all the trees that you have chosen.
+
+functions module
+~~~~~~~~~~~~~~~~
+   - *clear_tree(tree(dict), target_name(str))*:
+         When you call this function it clears a tree dictionary by extracting a specific target_name and its associated data.
+
+   - *HR_plot(tree(dict), type(str))* :
+         Plots the Hertzsprung Russell diagram based on the specified parameters.
 
 .. toctree::
    :maxdepth: 2
@@ -37,4 +47,3 @@ Indices and tables
 
 * :ref:`genindex`
 * :ref:`modindex`
-* :ref:`search`

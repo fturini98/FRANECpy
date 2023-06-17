@@ -1,9 +1,13 @@
 browse_and_choose_file_paths.py
 ===============================
 
-This module retrieves the file paths. In input, it needs the main data folder path.
+Description
+-----------
 
-Functions:
+This module retrieves the file paths via browsing. In input, it needs the main data folder path.
+The standard data folder path is *C:/Users/fturi/Desktop/Dati*.
+
+Functions
 ----------
 
 .. automodule:: browse_and_choose_file_paths

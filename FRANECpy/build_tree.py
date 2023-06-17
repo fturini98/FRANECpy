@@ -4,18 +4,22 @@ import os
 import pandas as pd
 
 
-#Section of code for managing the files and folders paths and generate the data tree with the function gen_tree().
+#Section of code for managing the files and folder paths and generating the data tree with the function gen_tree().
 
 def extract_root_path_and_name(file_paths, folder_paths):
     """
     Extracts the common root path from the given file and folder paths.
 
     Args:
-        file_paths (list): List of file paths.
-        folder_paths (list): List of folder paths.
+        file_paths (list): 
+            List of file paths.
+            
+        folder_paths (list): 
+            List of folder paths.
 
     Returns:
-        string: A string containing the common root path.
+        common_path (string): 
+            A string containing the common root path.
     """
     # Get the common path
     common_path = os.path.commonpath(file_paths + folder_paths)
@@ -25,14 +29,18 @@ def extract_root_path_and_name(file_paths, folder_paths):
 def manage_RID_folders(folder_path, file_paths):
     """
     Retrieves the file paths of DAT files within a specified folder and its subfolders.
-    And append it to the list of files path.
+    Append it to the list of files path.
     
     Args:
-        folder_path (str): The path to the folder to search for DAT files.
-        file_paths (list): A list to store the file paths of the DAT files.
+        folder_path (str): 
+            The path to the folder to search for RID files.
+        
+        file_paths (list): 
+            A list to store the file paths.
 
     Returns:
-        list: The updating list containing also the file paths of the DAT files found within the folder and its subfolders.
+        file_paths(list): 
+            The updating list containing also the file paths of the RID files found within the folder and its subfolders.
     """
 
     # Retrieve the list of files within the folder path
@@ -51,6 +59,20 @@ def manage_RID_folders(folder_path, file_paths):
     return file_paths
 
 def manage_ISO_folders(folder_path, file_paths):
+    """
+    Retrieve AGE files from the ISO folder path and append their paths to the *file_paths* list.
+
+    Args:
+        folder_path (str): 
+            The path to the ISO folder containing the files.
+            
+        file_paths (list): 
+            The list to which the file paths will be appended.
+
+    Returns:
+        file_paths (list): 
+            The updated file_paths list contains the paths of ISO files.
+    """
     # Retrieve the list of files within the folder path
     sub_files = os.listdir(folder_path)
 
@@ -70,14 +92,18 @@ def manage_folders(folder_paths, file_paths):
     """
     Manages the folder paths and generates a list of file paths of interest.
 
-    The function processes the given folder paths and extracts relevant file paths based on specific conditions of formattation of the data file provided by FRANEC program.
+    The function processes the given folder paths and extracts relevant file paths based on specific conditions of formation of the data file provided by FRANEC program.
 
     Args:
-        folder_paths (list): A list of folder paths to be processed.
-        file_paths (list): A list to store the file paths of interest.
+        folder_paths (list): 
+            A list of folder paths to be processed.
+            
+        file_paths (list): 
+            A list to store the file paths of interest.
 
     Returns:
-        list: A list containing the file paths of interest.
+        file_paths (list): 
+            A list containing the file paths of interest.
     """
 
     for folder_path in folder_paths:
@@ -123,7 +149,7 @@ def manage_folders(folder_paths, file_paths):
 
     return file_paths
 
-##Section wher the tree is build:
+##Section where the tree is built:
 
 def build_tree_from_paths(file_paths, common_path):
     """
@@ -131,16 +157,20 @@ def build_tree_from_paths(file_paths, common_path):
 
     The function analyzes the file paths, extracts relevant information, and organizes it into a tree-like structure.
 
-    The tree structure is organized for having at the same level the branch of "tools-driver-out" and "tools-isocrone-out", inside thath
-    there are three sub branchs, RAW, RID and ISO (thath must be implemented).
-    Inside of this three branchs, there are the branch of the metallictys and iside there, there are the pandas dataframe divide for each mass.
+    The tree structure is organized for having at the same level the branch of "tools-driver-out" and "tools-isocrone-out", inside that
+    there are sub-branches named RAW, RID and ISO.
+    Inside these three branches, there are the branches of the metallicities and inside there are the pandas data frames divided by mass.
     
     Args:
-        file_paths (list): A list of file paths to be processed.
-        common_path (str): The common path shared by all the file paths.
+        file_paths (list): 
+            A list of file paths to be processed.
+            
+        common_path (str): 
+            The common path is shared by all the file paths.
 
     Returns:
-        dict: A hierarchical tree structure representing the organization of the file paths.
+        tree (dict): 
+            A hierarchical tree structure whit the data.
     """
 
     tree = {}
@@ -292,14 +322,18 @@ def generate_tree(file_paths, folder_paths):
     Generates a hierarchical tree structure based on file paths and folder paths.
 
     The function extracts the common path, manages the folder paths, and builds a tree-like structure based on the file paths.
-    For doing thath it use the build_tree_from_paths function.
+    For doing that it uses the build_tree_from_paths function.
     
     Args:
-        file_paths (list): A list of file paths to be processed.
-        folder_paths (list): A list of folder paths to be processed.
+        file_paths (list):
+            A list of file paths to be processed.
+            
+        folder_paths (list): 
+            A list of folder paths to be processed.
 
     Returns:
-        dict: A hierarchical tree structure representing the organization of the file paths.
+        tree (dict): 
+            A hierarchical tree structure whit the data.
     """
 
     common_path = extract_root_path_and_name(file_paths, folder_paths)
@@ -319,13 +353,14 @@ def save_tree_with_shell(tree, folder_path):
     Prompt the user to save a tree and serialize it to a file.
 
     This function prompts the user to save a tree by providing a file name and saves the serialized tree to a specified folder path. The tree is serialized to JSON format before saving.
-
+    The folder path of input is the main data folder path, the function manages the creation of the *DataTrees* subfolder if it is necessary.
+    
     Args:
-        tree: The tree object to save.
-        folder_path (str): The folder path where the tree will be saved.
-
-    Returns:
-        None
+        tree (dict): 
+            The tree object to save.
+            
+        folder_path (str): 
+            The folder path where the tree will be saved.
     """
     while True:
         save_tree = input("\033[34mDo you want to save the tree? (y/n): \033[0m")
@@ -397,10 +432,12 @@ def load_tree_from_path(file_path):
     This function loads a serialized tree from a specified file path. The tree is deserialized, including any serialized DataFrames.
 
     Args:
-        file_path (str): The path of the file containing the serialized tree.
+        file_path (str): 
+            The path of the file containing the serialized tree.
 
     Returns:
-        tuple: A tuple containing the loaded tree and the file name.
+        tree (dict), file_name (str): 
+            A tuple containing the loaded tree and the file name.
     """
     # Check if the file exists
     if not os.path.isfile(file_path):
@@ -446,10 +483,12 @@ def load_trees(tree_paths):
     This function loads multiple trees from the given file paths and stores them in a dictionary, where the keys are the tree names (derived from the file names) and the values are the loaded trees. It also includes a special "paths" branch in the dictionary, which contains all the tree paths.
 
     Args:
-        tree_paths (list): A list of file paths to the tree files.
+        tree_paths (list): 
+            A list of file paths to the tree files.
 
     Returns:
-        dict: A dictionary containing the loaded trees and the tree paths.
+        trees (dict): 
+            A dictionary containing the loaded trees and the tree paths.
     """
     trees = {}
     for tree_path in tree_paths:
