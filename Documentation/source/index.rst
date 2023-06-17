@@ -33,7 +33,7 @@ functions module
          When you call this function it clears a tree dictionary by extracting a specific target_name and its associated data.
 
    - *HR_plot(tree(dict), type(str))* :
-         Plots the Hertzsprung Russell diagram based on the specified parameters.
+         Plots the Hertzsprung Russell diagrams based on the specified parameters.
 
 .. toctree::
    :maxdepth: 2

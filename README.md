@@ -3,7 +3,7 @@
 ## Badges
 [![Documentation Status](https://readthedocs.org/projects/franecpy/badge/?version=latest)](https://franecpy.readthedocs.io/en/latest/?badge=latest)
 
-## Shell scripts to install and other usefull controls
+## Shell scripts
 
 **Install:** 
     
@@ -17,26 +17,39 @@
 
 >The *py -m* is to run python controll in windows, if you use another system, use only pip command.
 
-**Build documentation in local:** 
+**Build documentation locally:** 
 
     py -m sphinx.cmd.build -b html source build
 
 ## Description
 
-A simple library for help in the data analysis from FRANEC simulation.
+A simple library for help in the data analysis of FRANEC simulations.
 
 ## Most useful functions:
 
-### user_interaction module:
+### usere_interface module
 
-In this module are present three main functions:
+   - *tree_call()*:   
+        
+        When you call this function it creates an interactive window where you choose to import or create data trees. The function returns a data tree.
+   
+   - *jupyter_simple_browse(tree(dict))*: 
+        
+        When you call the function it opens a window to browse the tree. It works also in jupyter environment.
 
->*tree_call()*: 
->>When you call this function it creates an interactive window where you choose to import or create data trees. The function returns a data tree.
+### build_tree module
 
->*load_trees(list(files paths))*: 
->>When you call this function it loads the trees that you have alredy saved from their files phats. It return a data tree whit all the trees that you have chosen.
+   - *load_trees(list(files paths))*: 
+        
+        When you call this function it loads the trees that you have already saved from their files phats. It returns a data tree whit all the trees that you have chosen.
 
->*jupyter_simple_browse(tree)*: 
->>When you call the function it opens a window to browse the tree. It works also in jupyter enviroment.
+### functions module
+
+   - *clear_tree(tree(dict), target_name(str))*:
+        
+        When you call this function it clears a tree dictionary by extracting a specific target_name and its associated data.
+
+   - *HR_plot(tree(dict), type(_str))_*: 
+        
+        Plots the Hertzsprung Russell diagrams based on the specified parameters.
 
