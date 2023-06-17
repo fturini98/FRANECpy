@@ -1,0 +1,259 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>user_interface.py &mdash; FRANECpy 0.0.1 documentation</title>
+      <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+  <!--[if lt IE 9]>
+    <script src="../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script src="../_static/jquery.js"></script>
+        <script src="../_static/_sphinx_javascript_frameworks_compat.js"></script>
+        <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
+        <script src="../_static/doctools.js"></script>
+        <script src="../_static/sphinx_highlight.js"></script>
+    <script src="../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="functions.py" href="functions_doc.html" />
+    <link rel="prev" title="Modules" href="../Modules.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="../index.html" class="icon icon-home">
+            FRANECpy
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Contents:</span></p>
+<ul class="current">
+<li class="toctree-l1 current"><a class="reference internal" href="../Modules.html">Modules</a><ul class="current">
+<li class="toctree-l2 current"><a class="current reference internal" href="#">user_interface.py</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#description">Description</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#module-user_interface">Functions</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#user_interface.browse_load_trees"><code class="docutils literal notranslate"><span class="pre">browse_load_trees()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#user_interface.choose_open_or_create_tree"><code class="docutils literal notranslate"><span class="pre">choose_open_or_create_tree()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#user_interface.jupyter_choose_file_paths"><code class="docutils literal notranslate"><span class="pre">jupyter_choose_file_paths()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#user_interface.jupyter_choose_tree_paths"><code class="docutils literal notranslate"><span class="pre">jupyter_choose_tree_paths()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#user_interface.jupyter_simple_browse"><code class="docutils literal notranslate"><span class="pre">jupyter_simple_browse()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#user_interface.print_tree"><code class="docutils literal notranslate"><span class="pre">print_tree()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#user_interface.simple_browse"><code class="docutils literal notranslate"><span class="pre">simple_browse()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#user_interface.tree_call"><code class="docutils literal notranslate"><span class="pre">tree_call()</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="functions_doc.html">functions.py</a></li>
+<li class="toctree-l2"><a class="reference internal" href="browse_and_choose_file_paths_doc.html">browse_and_choose_file_paths.py</a></li>
+<li class="toctree-l2"><a class="reference internal" href="build_tree_doc.html">build_tree.py</a></li>
+</ul>
+</li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">FRANECpy</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../index.html" class="icon icon-home" aria-label="Home"></a></li>
+          <li class="breadcrumb-item"><a href="../Modules.html">Modules</a></li>
+      <li class="breadcrumb-item active">user_interface.py</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="../_sources/Modules/user_interface_doc.rst.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="user-interface-py">
+<h1>user_interface.py<a class="headerlink" href="#user-interface-py" title="Permalink to this heading"></a></h1>
+<section id="description">
+<h2>Description<a class="headerlink" href="#description" title="Permalink to this heading"></a></h2>
+<p>This module provides a user interface using the functions defined in the modules <strong>browse_and_choose_file_paths</strong> and <strong>build_tree</strong>.</p>
+<p>The main goal of this module is to provide via the <strong>tree_call()</strong> function an interface where the user could choose, starting from a main folder where the different data set folders are saved, if:</p>
+<blockquote>
+<div><ul>
+<li><p><strong>Create</strong> a data tree from the folders:</p>
+<blockquote>
+<div><ul class="simple">
+<li><p><em>tools-driver-out</em> for the <strong>RAW</strong> data.</p></li>
+<li><p><em>tools-isocrone-out</em> for the <strong>ISO</strong> (<em>isocrone</em>) and <strong>RID</strong> (<em>tracce ridotte</em>) data.</p></li>
+</ul>
+</div></blockquote>
+</li>
+<li><p><strong>Save</strong> the data tree in the  <em>DataTrees</em> folder. This folder is automatically created when a tree is saved for the first time.</p></li>
+<li><p><strong>Load trees</strong> from the <em>DataTrees</em> folder.</p></li>
+</ul>
+</div></blockquote>
+<p><strong>Attention:</strong></p>
+<blockquote>
+<div><ul class="simple">
+<li><p><strong>The biggest folder</strong> that you can import are <em>tools-driver-out</em> and <em>tools-isocrone-out</em>.</p></li>
+<li><p><strong>The names of folders</strong> must be <em>tools-driver-out</em> and <em>tools-isocrone-out</em>, and inside that, you must have the standard folders ISO, RID, M <em>mass</em> provided by FRANEC program.</p></li>
+</ul>
+</div></blockquote>
+</section>
+<section id="module-user_interface">
+<span id="functions"></span><h2>Functions<a class="headerlink" href="#module-user_interface" title="Permalink to this heading"></a></h2>
+<dl class="py function">
+<dt class="sig sig-object py" id="user_interface.browse_load_trees">
+<span class="sig-prename descclassname"><span class="pre">user_interface.</span></span><span class="sig-name descname"><span class="pre">browse_load_trees</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">data_folder_paths</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#user_interface.browse_load_trees" title="Permalink to this definition"></a></dt>
+<dd><p>Browse and load trees from the specified data folder paths.</p>
+<p>This function prompts the user to browse and select tree files from the specified data folder paths. It then loads the selected tree files using the <cite>load_trees</cite> function and returns the loaded trees.</p>
+<dl class="simple">
+<dt>Args:</dt><dd><p>data_folder_paths (list): A list of data folder paths to browse for tree files.</p>
+</dd>
+<dt>Returns:</dt><dd><p>dict: A dictionary containing the loaded trees and the tree paths.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="user_interface.choose_open_or_create_tree">
+<span class="sig-prename descclassname"><span class="pre">user_interface.</span></span><span class="sig-name descname"><span class="pre">choose_open_or_create_tree</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#user_interface.choose_open_or_create_tree" title="Permalink to this definition"></a></dt>
+<dd><p>Prompt the user to choose between loading existing trees or creating a new one.</p>
+<p>This function continuously prompts the user to choose between loading existing trees or creating a new one until a valid choice is made.</p>
+<dl class="simple">
+<dt>Returns:</dt><dd><p>str: The user’s choice, either “create” or “load”.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="user_interface.jupyter_choose_file_paths">
+<span class="sig-prename descclassname"><span class="pre">user_interface.</span></span><span class="sig-name descname"><span class="pre">jupyter_choose_file_paths</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">data_folder_path</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#user_interface.jupyter_choose_file_paths" title="Permalink to this definition"></a></dt>
+<dd><p>Choose file paths and folder paths using a file dialog within a Jupyter Notebook.</p>
+<dl class="simple">
+<dt>Args:</dt><dd><p>data_folder_path (str): The path to the data folder.</p>
+</dd>
+<dt>Returns:</dt><dd><p>tuple: A tuple containing the selected file paths and folder paths.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="user_interface.jupyter_choose_tree_paths">
+<span class="sig-prename descclassname"><span class="pre">user_interface.</span></span><span class="sig-name descname"><span class="pre">jupyter_choose_tree_paths</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">data_folder_path</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#user_interface.jupyter_choose_tree_paths" title="Permalink to this definition"></a></dt>
+<dd><p>Choose tree paths using a file dialog within a Jupyter Notebook.</p>
+<dl class="simple">
+<dt>Args:</dt><dd><p>data_folder_path (str): The path to the data folder.</p>
+</dd>
+<dt>Returns:</dt><dd><p>list: A list of selected tree paths.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="user_interface.jupyter_simple_browse">
+<span class="sig-prename descclassname"><span class="pre">user_interface.</span></span><span class="sig-name descname"><span class="pre">jupyter_simple_browse</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">tree</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#user_interface.jupyter_simple_browse" title="Permalink to this definition"></a></dt>
+<dd><p>Launches a separate thread to run the ‘simple_browse’ function and provides a mechanism
+to stop the thread when needed.</p>
+<dl class="simple">
+<dt>Args:</dt><dd><p>tree: The tree parameter to pass to the ‘simple_browse’ function.</p>
+</dd>
+<dt>Returns:</dt><dd><p>None</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="user_interface.print_tree">
+<span class="sig-prename descclassname"><span class="pre">user_interface.</span></span><span class="sig-name descname"><span class="pre">print_tree</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">tree</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">indent</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">''</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#user_interface.print_tree" title="Permalink to this definition"></a></dt>
+<dd><p>Recursively prints the keys of a nested dictionary tree.</p>
+<p>Args:</p>
+<blockquote>
+<div><p>tree (dict): The nested dictionary tree to print.</p>
+<p>indent (str): Optional parameter to specify indentation for each level.
+Defaults to an empty string.</p>
+</div></blockquote>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="user_interface.simple_browse">
+<span class="sig-prename descclassname"><span class="pre">user_interface.</span></span><span class="sig-name descname"><span class="pre">simple_browse</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">tree</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">root</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#user_interface.simple_browse" title="Permalink to this definition"></a></dt>
+<dd><p>Displays a browseable tree structure using Tkinter.</p>
+<p>Args:</p>
+<blockquote>
+<div><p>tree (dict): The nested dictionary tree to display.</p>
+<p>root (tkinter.Tk, optional): The root Tkinter window. If None, a new Tkinter window is created.
+Defaults to None.</p>
+</div></blockquote>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="user_interface.tree_call">
+<span class="sig-prename descclassname"><span class="pre">user_interface.</span></span><span class="sig-name descname"><span class="pre">tree_call</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">standard_data_folder</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'C:/Users/fturi/Desktop/Dati'</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#user_interface.tree_call" title="Permalink to this definition"></a></dt>
+<dd><p>Perform the tree call operation based on user choice.</p>
+<p>This function performs the tree call operation based on the user’s choice of creating a new tree or loading existing trees.
+It interacts with the user to select files and folders, generate trees, and save or load trees accordingly.</p>
+<dl class="simple">
+<dt>Args:</dt><dd><p>standard_data_folder (str): The standard data folder path. The default is “C:/Users/fturi/Desktop/Dati”.</p>
+</dd>
+<dt>Returns:</dt><dd><p>dict or Tree: If a new tree is created, it returns the generated tree object.
+If existing trees are loaded, it returns a dictionary containing the loaded trees.</p>
+</dd>
+</dl>
+</dd></dl>
+
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="../Modules.html" class="btn btn-neutral float-left" title="Modules" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="functions_doc.html" class="btn btn-neutral float-right" title="functions.py" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2023, Francesco Turini.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

@@ -6,7 +6,7 @@ from FRANECpy.build_tree import *
 from FRANECpy.browse_and_choose_file_paths import *
 
 
-#Section of the code for load or create the tree, on dependence what the user choose
+#Section of the code for loading or creating the tree, on dependence what the user chooses
 
 def choose_open_or_create_tree():
     """
@@ -56,11 +56,11 @@ def tree_call(standard_data_folder="C:/Users/fturi/Desktop/Dati"):
     It interacts with the user to select files and folders, generate trees, and save or load trees accordingly.
 
     Args:
-        standard_data_folder (str): The standard data folder path. Default is "C:/Users/fturi/Desktop/Dati".
+        standard_data_folder (str): The standard data folder path. The default is "C:/Users/fturi/Desktop/Dati".
 
     Returns:
         dict or Tree: If a new tree is created, it returns the generated tree object.
-                      If existing trees are loaded, it returns a dictionary containing the loaded trees.
+        If existing trees are loaded, it returns a dictionary containing the loaded trees.
     """
     # Get the main data folder path
     data_folder_path = get_main_data_folder_path(standard_data_folder)
@@ -101,12 +101,24 @@ def tree_call(standard_data_folder="C:/Users/fturi/Desktop/Dati"):
         print("\033[32mTrees loaded\033[0m")
         return trees
 
-#Section of the code for show the tree structure and work on it
+#Section of the code to show the tree structure and work on it
 
 def simple_browse(tree,root=None):
+    """ Displays a browseable tree structure using Tkinter.
+    
+    Args:
+        
+        tree (dict): The nested dictionary tree to display.
+        
+        root (tkinter.Tk, optional): The root Tkinter window. If None, a new Tkinter window is created.
+        Defaults to None.
+    """
+        
     if root==None:
         root=tk.Tk()
     node_dataframes = {}
+    
+    #function for the event is not used, but in the future, the structure could be useful. 
     def on_tree_select(event):
         item = treeview.focus()
         node_id = treeview.item(item, "text")
@@ -135,8 +147,17 @@ def simple_browse(tree,root=None):
 
     root.mainloop()
 
-
 def print_tree(tree, indent=''):
+    """ 
+    Recursively prints the keys of a nested dictionary tree.
+    
+    Args:
+    
+        tree (dict): The nested dictionary tree to print.
+        
+        indent (str): Optional parameter to specify indentation for each level.
+        Defaults to an empty string.
+    """
     for key, value in tree.items():
         if isinstance(value, dict):
             print(f"{indent}{key}")
@@ -146,13 +167,13 @@ def print_tree(tree, indent=''):
 
 #Section for porting the program to the jupyter notebook
 
-#Function whith gui and return
+#Function with GUI and return
 
 def jupyter_choose_file_paths(data_folder_path):
     """
     Choose file paths and folder paths using a file dialog within a Jupyter Notebook.
 
-    Parameters:
+    Args:
         data_folder_path (str): The path to the data folder.
 
     Returns:
@@ -199,7 +220,7 @@ def jupyter_choose_tree_paths(data_folder_path):
     """
     Choose tree paths using a file dialog within a Jupyter Notebook.
 
-    Parameters:
+    Args:
         data_folder_path (str): The path to the data folder.
 
     Returns:
@@ -241,7 +262,7 @@ def jupyter_choose_tree_paths(data_folder_path):
     return result_holder['tree_paths']
 
 
-#Function whitout return
+#Function without return
  
 def jupyter_simple_browse(tree):
     """

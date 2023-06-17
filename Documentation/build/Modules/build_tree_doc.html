@@ -44,7 +44,8 @@
               <p class="caption" role="heading"><span class="caption-text">Contents:</span></p>
 <ul class="current">
 <li class="toctree-l1 current"><a class="reference internal" href="../Modules.html">Modules</a><ul class="current">
-<li class="toctree-l2"><a class="reference internal" href="user_interaction_doc.html">user_interaction.py</a></li>
+<li class="toctree-l2"><a class="reference internal" href="user_interface_doc.html">user_interface.py</a></li>
+<li class="toctree-l2"><a class="reference internal" href="functions_doc.html">functions.py</a></li>
 <li class="toctree-l2"><a class="reference internal" href="browse_and_choose_file_paths_doc.html">browse_and_choose_file_paths.py</a></li>
 <li class="toctree-l2 current"><a class="current reference internal" href="#">build_tree.py</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="#module-build_tree">Functions:</a><ul>
@@ -52,6 +53,8 @@
 <li class="toctree-l4"><a class="reference internal" href="#build_tree.extract_root_path_and_name"><code class="docutils literal notranslate"><span class="pre">extract_root_path_and_name()</span></code></a></li>
 <li class="toctree-l4"><a class="reference internal" href="#build_tree.generate_tree"><code class="docutils literal notranslate"><span class="pre">generate_tree()</span></code></a></li>
 <li class="toctree-l4"><a class="reference internal" href="#build_tree.load_tree_from_path"><code class="docutils literal notranslate"><span class="pre">load_tree_from_path()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#build_tree.load_trees"><code class="docutils literal notranslate"><span class="pre">load_trees()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#build_tree.manage_ISO_folders"><code class="docutils literal notranslate"><span class="pre">manage_ISO_folders()</span></code></a></li>
 <li class="toctree-l4"><a class="reference internal" href="#build_tree.manage_RID_folders"><code class="docutils literal notranslate"><span class="pre">manage_RID_folders()</span></code></a></li>
 <li class="toctree-l4"><a class="reference internal" href="#build_tree.manage_folders"><code class="docutils literal notranslate"><span class="pre">manage_folders()</span></code></a></li>
 <li class="toctree-l4"><a class="reference internal" href="#build_tree.save_tree_with_shell"><code class="docutils literal notranslate"><span class="pre">save_tree_with_shell()</span></code></a></li>
@@ -156,6 +159,24 @@ folder_paths (list): A list of folder paths to be processed.</p>
 </dd>
 </dl>
 </dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="build_tree.load_trees">
+<span class="sig-prename descclassname"><span class="pre">build_tree.</span></span><span class="sig-name descname"><span class="pre">load_trees</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">tree_paths</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#build_tree.load_trees" title="Permalink to this definition"></a></dt>
+<dd><p>Load multiple trees from the specified file paths.</p>
+<p>This function loads multiple trees from the given file paths and stores them in a dictionary, where the keys are the tree names (derived from the file names) and the values are the loaded trees. It also includes a special “paths” branch in the dictionary, which contains all the tree paths.</p>
+<dl class="simple">
+<dt>Args:</dt><dd><p>tree_paths (list): A list of file paths to the tree files.</p>
+</dd>
+<dt>Returns:</dt><dd><p>dict: A dictionary containing the loaded trees and the tree paths.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="build_tree.manage_ISO_folders">
+<span class="sig-prename descclassname"><span class="pre">build_tree.</span></span><span class="sig-name descname"><span class="pre">manage_ISO_folders</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">folder_path</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">file_paths</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#build_tree.manage_ISO_folders" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
 
 <dl class="py function">
 <dt class="sig sig-object py" id="build_tree.manage_RID_folders">

@@ -8,7 +8,7 @@ This module adds some useful functions for analyzing the data tree.
 
 Useful functions
 ~~~~~~~~~~~~~~~~
-The most useful function is:
+The most useful function are:
 
 HR_plot()
 +++++++++

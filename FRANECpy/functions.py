@@ -4,50 +4,113 @@ import sys
 import re
 
 def clear_tree(tree, target_name):
+    """
+    Clears a tree dictionary by extracting a specific target_name and its associated data.
+    Creating a new tree that has for the base root the "traget_name" branch of the parent tree.
+    
+    Works only if the structure is  Tree[...]...["RID"/"RAW"/"ISO"][metallicity][masses/ages dataframes]
+
+    Args:
+    
+        tree (dict): The input tree dictionary.
+        
+        target_name (str): The target_name to extract from the tree.
+        Could be only:
+        
+            "RID" for reduced traces.
+            
+            "ISO" for isochrones.
+            
+            "RAW" for raw data.
+            
+            
+        
+
+    Returns:
+    
+        dict: The cleared tree dictionary containing only the specified target_name and its associated data.
+    """
+
+    # Create an empty dictionary to store the cleared tree
     cleared_tree = {}
 
+    # Iterate over the items in the input tree dictionary
     for key, values in tree.items():
+        # Check if the current key matches the target_name
         if key == target_name:
+            # Iterate over the metals and their corresponding masses in the values dictionary
             for metall, masses in values.items():
+                # If the metall is not already present in the cleared_tree, add it as an empty dictionary
                 if metall not in cleared_tree:
                     cleared_tree[metall] = {}
+                # Get the current metall folder in the cleared_tree
                 metall_folder = cleared_tree[metall]
+                # Iterate over the masses and their associated dataframes
                 for mass, df in masses.items():
+                    # Add the mass and its corresponding dataframe to the metall_folder
                     metall_folder[mass] = df
         else:
+            # If the "values" is a dictionary, recursively call the clear_tree function on it
             if isinstance(values, dict):
                 subtree = clear_tree(values, target_name)
+                # Update the cleared_tree with the cleared subtree
                 cleared_tree.update(subtree)
-    
+
+    # Return the cleared_tree
     return cleared_tree
 
-def HR_plot_equal_metall(tree,type,metal,mass_min=None,mass_max=None):
-    if metal in tree:
-        masses=tree[metal]
-    else:
-        print(f"No data for {metal}.Exit!")
-        sys.exit(0)
-    for mass, df in masses.items():
-        match = re.search(r'M([\d.]+)', mass)
-        mass=float(match.group(1))
+def HR_plot_equal_metall(tree, type, metal, mass_min=None, mass_max=None):
+    """
+    Plots the Hertzsprung Russell diagram for a specific metal from the given tree dictionary.
+    
+    If the optional arguments are None the boundaries limits are ignored.
+
+    Args:
+    
+        tree (dict): The input tree dictionary.
         
-        if (mass_min is None or mass_min<= mass) and (mass_max is None or mass<=mass_max):
-            
-            if type=="RID":
-                # Plotting logic here
+        type (str): The type of data ('RID' or 'RAW').
+        
+        metal (str): The metal to plot.
+        
+        mass_min (float, optional): Minimum mass value to include in the plot. Defaults to None.
+        
+        mass_max (float, optional): Maximum mass value to include in the plot. Defaults to None.
+    """
+
+    # Check if the given metal exists in the tree
+    if metal in tree:
+        masses = tree[metal]
+    else:
+        # Print an error message and exit if the metal is not found in the tree
+        print(f"No data for {metal}. Exiting!")
+        sys.exit(0)
+
+    # Iterate over the masses and their associated data frames
+    for mass, df in masses.items():
+        # Extract the mass value from the mass string using a regular expression
+        match = re.search(r'M([\d.]+)', mass)
+        mass = float(match.group(1))
+
+        # Check if the mass is within the specified range (if any)
+        if (mass_min is None or mass_min <= mass) and (mass_max is None or mass <= mass_max):
+            if type == "RID":
+                # Plotting logic for RID type
                 plt.plot(df["LOG_TE_(K)"], df["LOG_L/Lo"], label=f"Mass {mass} ({metal})")
-            elif type=="RAW":
+            elif type == "RAW":
+                # Plotting logic for RAW type
                 plt.plot(df["LOG TE"], df["LOG L"], label=f"Mass {mass} ({metal})")
-                
-    # Customize the plot
-    if type=="RID":  
+
+    # Customize the plot based on the type of data
+    if type == "RID":
         plt.xlabel("LOG TE (K)")
         plt.ylabel("LOG L/Lo")
-    elif type=="RAW":
+    elif type == "RAW":
         plt.xlabel("LOG TE")
         plt.ylabel("LOG L")
-    
+
     plt.title(f"Different masses for {metal}")
+    #invert x axis for making the HR plot.
     plt.gca().invert_xaxis()
     plt.legend()
     plt.grid(True)
